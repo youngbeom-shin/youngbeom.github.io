@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>使用sublime text编辑svg文件</title>
+
+    <link rel="icon" href="../../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用sublime text编辑svg文件">
+    <meta property="og:description" content="发现问题：未知问题导致finder中svg图像显示大小不同
+
+
+我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。
+
+通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。
+
+
+
+猜想可能出现问题的原因
+
+ 1. 图层命名导致
+ 2. 因为存在多余的无用图层
+ 3. 图层顺序导致
+ 4. 代码行数导致
+ 5. 代码内容出错
+
+
+验证猜想
+
+
+1. layer图层命名导致
+
+通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。
+
+
+2. 因为存在多余的无用图层
+
+没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。
+
+
+3. 图层顺序导致
+
+因为aerialway_11的">
+    <meta property="og:url" content="http://localhost:2368/sublime-text-svg-path/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/02/hero-1.png">
+    <meta property="article:published_time" content="2018-07-24T12:22:00.000Z">
+    <meta property="article:modified_time" content="2020-02-29T13:47:58.000Z">
+    <meta property="article:tag" content="技术">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用sublime text编辑svg文件">
+    <meta name="twitter:description" content="发现问题：未知问题导致finder中svg图像显示大小不同
+
+
+我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。
+
+通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。
+
+
+
+猜想可能出现问题的原因
+
+ 1. 图层命名导致
+ 2. 因为存在多余的无用图层
+ 3. 图层顺序导致
+ 4. 代码行数导致
+ 5. 代码内容出错
+
+
+验证猜想
+
+
+1. layer图层命名导致
+
+通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。
+
+
+2. 因为存在多余的无用图层
+
+没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。
+
+
+3. 图层顺序导致
+
+因为aerialway_11的">
+    <meta name="twitter:url" content="http://localhost:2368/sublime-text-svg-path/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/02/hero-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="技术">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="720">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "使用sublime text编辑svg文件",
+    "url": "http://localhost:2368/sublime-text-svg-path/",
+    "datePublished": "2018-07-24T12:22:00.000Z",
+    "dateModified": "2020-02-29T13:47:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/02/hero-1.png",
+        "width": 1080,
+        "height": 720
+    },
+    "keywords": "技术",
+    "description": "发现问题：未知问题导致finder中svg图像显示大小不同\n\n\n我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。\n\n通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。\n\n\n\n猜想可能出现问题的原因\n\n 1. 图层命名导致\n 2. 因为存在多余的无用图层\n 3. 图层顺序导致\n 4. 代码行数导致\n 5. 代码内容出错\n\n\n验证猜想\n\n\n1. layer图层命名导致\n\n通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。\n\n\n2. 因为存在多余的无用图层\n\n没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。\n\n\n3. 图层顺序导致\n\n因为aerialway_11的",
+    "mainEntityOfPage": "http://localhost:2368/sublime-text-svg-path/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #000000;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">使用sublime text编辑svg文件</h1>
+                <section class="post-meta">
+                    youngbeom -
+                    <time class="post-date" datetime="2018-07-24">24 7月 2018</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/02/hero-1.png" width="600" height="340" layout="responsive" 
+                alt="使用sublime text编辑svg文件"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h2 id="-finder-svg-">发现问题：未知问题导致finder中svg图像显示大小不同</h2><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-1.png" class="kg-image" alt width="1118" height="458" layout="responsive"></amp-img></figure><p><br />我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。</p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-2.png" class="kg-image" alt width="1509" height="230" layout="responsive"></amp-img></figure><p>通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-3.png" class="kg-image" alt width="2880" height="1800" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-4.png" class="kg-image" alt width="2880" height="1800" layout="responsive"></amp-img></figure><h2 id="-">猜想可能出现问题的原因</h2><ol><li>图层命名导致</li><li>因为存在多余的无用图层</li><li>图层顺序导致</li><li>代码行数导致</li><li>代码内容出错</li></ol><h2 id="--1">验证猜想</h2><h3 id="1-layer-">1. layer图层命名导致</h3><p>通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。</p><h3 id="2-">2. 因为存在多余的无用图层</h3><p>没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。</p><h3 id="3-">3. 图层顺序导致</h3><p>因为aerialway_11的图层中复合路径的图层在最上面,所以认为是否因为顺序导致大小的不同,但是试验过后并没有得到验证。再后来查看代码上面<strong>path</strong>字段的时候发现,我们设计软件最底部的图层会在代码的最上面开始显示,也就是顺序设计软件和代码是相反的。</p><h3 id="4-">4. 代码行数导致</h3><p>通过sublime将accessories_11的代码从6行合并成1行再存储发现还是没有变成大图,和是否是多行但行还是没有关系。代码行数的不同在后文会有解释说明,主要是再导出的时候框选了minify导致丢失原有的格式。但是格式的不同并不会在设计软件的显示上出现差别,都是一样的图形显示。</p><h3 id="5-">5. 代码内容出错</h3><p>经过上面的实验,最终还是将问题集中在代码的内容上,发现两者在viewbox附近的代码存在不同,accessories_11部分相比aerialway_11在viewbox前面多了一段width="19" height="19”代码,我试着将这一段代码删除再存储,发现问题得到解决,基本可以判定是这段代码使文件在显示上存在差异。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-5.png" class="kg-image" alt width="1509" height="230" layout="responsive"></amp-img></figure><p><br />后来在实际操作illustrator的时候发现需要框选responsive,这样最终在finder中看到的都是大图的图标,代码中也不会带有width和height,另外一个如果是框选minify的话会让svg的代码变成一行,丢掉原有的对其格式。也就是上文提及的代码行数问题。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-6.png" class="kg-image" alt width="1024" height="898" layout="responsive"></amp-img></figure><p><br />上图为标准导出设定</p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-7.png" class="kg-image" alt width="2876" height="472" layout="responsive"></amp-img></figure><p><br />选择minify选项的svg代码</p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-8.png" class="kg-image" alt width="2880" height="820" layout="responsive"></amp-img></figure><p><br />没有选择minify选项的svg代码</p><h2 id="--2">统一代码格式</h2><p>现在剩下的就是希望我们的svg文件都能以大视图的方式显示在finder中,这对我们去操作查找图标帮助非常大,所以我们要批量将文件夹内的400多个svg文件中的**width="19" height="19”**代码删除,我想通过sublime查找和替换的方式去批量操作。</p><h2 id="--3">导出规范</h2><ol><li>layer name=file name</li><li>用export as</li><li>Use Artboards</li><li>styleing：Presentation Attributes<br />Font：svg<br />Image：Preserve<br />Object IDs：Layer Names<br />Decimal：3<br />Minify Responsive两个都勾选</li></ol><p>这里的Responsive就是会在导出的代码中不包含<strong>width="19" height="19”</strong>,会通过自适应的方式而不是去限定高宽的数值,这是在软件层面操作的时候设定的方式,但是如果在sublime中直接编辑删除上面的代码则是省去了打开AI的时间,甚至比Adobe的批处理更省时间。<br />规范制订的目的是为了防止数量特别多时也能快速的找到相应的位置和标记的代码,方便修改和做进一步的操作。</p><h2 id="-sublime-icon">应用：通过sublime批量操作修改icon</h2><p>通过sublime操作去修改svg的主要原因是因为省去了打开操作设计软件的步骤,直接查找替换会快速很多,节省了大量的时间。</p><h3 id="--4">操作说明</h3><p>首先我们频繁会改动的svg主要集中在默认的icon,不包含世界杯地图等这样的特殊样式地图,以交通类目下的bicycle为例,icon主要是分为两个部分,交通主题色圆形的背景部分 <strong>circle cx="9.5" cy="9.5" r="9.5" fill="#6c7"</strong> 和背景上面的自行车图形部分 <strong>path d="M10.5,5.5a.5.5,0,0,0,0,1H11v.7L8.3,8.8,7.7,7.5h.7a.5.5,0,0,0,0-1h-2a.5.5,0,0,0,0,1h.2L7,8.6c-.2,0-.4-.1-.6-.1A2.475,2.475,0,0,0,4,11.046L4,11.1a2.6,2.6,0,0,0,2.5,2.4A2.476,2.476,0,0,0,9,11.049V11H9a2.011,2.011,0,0,0-.4-1.3l2.5-1.4.4.4A2.526,2.526,0,0,0,10,11a2.5,2.5,0,1,0,2.7-2.5L12,7.8V6a.457.457,0,0,0-.4-.5Zm-4,4A1.5,1.5,0,1,1,5,11,1.5,1.5,0,0,1,6.5,9.5Zm6,0h0A1.454,1.454,0,0,1,14,10.9V11a1.5,1.5,0,0,1-3,0,1.473,1.473,0,0,1,1.445-1.5Z" fill="#fff"</strong><br />这两部分的代码会经常修改的是里面的颜色部分,为了方便归类和修改我讲所有的icon都分成了几大类<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-9.png" class="kg-image" alt width="1764" height="1096" layout="responsive"></amp-img></figure><p><br />在默认主题下是上述代码中的颜色,但是在新的样式light主题中icon如果太过鲜艳会吸引过多的视觉注意,这违背了最初的设计目标,所以我们选择了灰色背景白色图标的方式,在sublime修改几十个图标颜色替换的操作只需要不到一分钟,下面分解具体的操作。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-10.jpg" class="kg-image" alt width="2288" height="908" layout="responsive"></amp-img></figure><p><strong>1. 用sublime打开交通类图标所在的文件夹</strong><br />file—open—图标所在文件夹<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-11.png" class="kg-image" alt width="3084" height="1978" layout="responsive"></amp-img></figure><p><strong>2. 在文件内查找</strong><br />find—find in files(com+shift+F)—输入要替换的内容<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-12.png" class="kg-image" alt width="2880" height="1800" layout="responsive"></amp-img></figure><p><strong>3. 分别替换背景和图标颜色</strong><br />在find输入框中填写需要替换的16进制颜色代码,在replace输入框中填写新的代码,之后点击右下角的<strong>Replace</strong>之后点击file—save all,操作完成后就能在文件夹内看到变化后的图标。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-13.png" class="kg-image" alt width="2880" height="1798" layout="responsive"></amp-img></figure><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-14.png" class="kg-image" alt width="2882" height="1756" layout="responsive"></amp-img></figure><p><br /><strong>4. 之后就可以通过脚本命令行来制作sprits了,在sourcetree中提交完修改就能在测试服务器中看到新的效果了.</strong></p><h2 id="--5">总结</h2><h3 id="--6">简单高效</h3><p>通过代码层面去管理和编辑svg是新的一种尝试,能让我们更加了解svg这种矢量格式,也能通过这种方式大大增加工作效率,最初接触这项任务时完成四百多张图标的操作用了将近两个工作日,而现在只需要不到十分钟就能操作完成并且部署看到新的效果。</p><h3 id="--7">便于管理</h3><p>通过发现的问题简单的操作了一下关于图标的管理及制作的一些小细节,发现通过整理和归类对于svg的管理也带来了帮助,通过文件夹的归类方式上也能让设计思维得到表达,但是在具体在设计实施的过程中也可能会因为一些需求进行相应的变化,目前的方案只是适用于比较简单重复性比较高的任务,如果后期变得复杂还需要引入正则表达式的方式进行增删、查找和编辑,但是最终目标还是提高效率和设计质量,如果对于上述方案有新的想法和建议欢迎补充！</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        <h3>乌托邦是个理想国</h3>
+            <p>柏拉图说:乌托邦是个理想国</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

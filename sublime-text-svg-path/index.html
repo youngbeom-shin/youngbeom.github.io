@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="auto-dark-mode">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>使用sublime text编辑svg文件</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="../assets/css/screen.css%3Fv=6c9bd47ebb.css">
+		<link rel="icon" href="../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用sublime text编辑svg文件">
+    <meta property="og:description" content="发现问题：未知问题导致finder中svg图像显示大小不同
+
+
+我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。
+
+通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。
+
+
+
+猜想可能出现问题的原因
+
+ 1. 图层命名导致
+ 2. 因为存在多余的无用图层
+ 3. 图层顺序导致
+ 4. 代码行数导致
+ 5. 代码内容出错
+
+
+验证猜想
+
+
+1. layer图层命名导致
+
+通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。
+
+
+2. 因为存在多余的无用图层
+
+没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。
+
+
+3. 图层顺序导致
+
+因为aerialway_11的">
+    <meta property="og:url" content="http://localhost:2368/sublime-text-svg-path/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/02/hero-1.png">
+    <meta property="article:published_time" content="2018-07-24T12:22:00.000Z">
+    <meta property="article:modified_time" content="2020-02-29T13:47:58.000Z">
+    <meta property="article:tag" content="技术">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用sublime text编辑svg文件">
+    <meta name="twitter:description" content="发现问题：未知问题导致finder中svg图像显示大小不同
+
+
+我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。
+
+通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。
+
+
+
+猜想可能出现问题的原因
+
+ 1. 图层命名导致
+ 2. 因为存在多余的无用图层
+ 3. 图层顺序导致
+ 4. 代码行数导致
+ 5. 代码内容出错
+
+
+验证猜想
+
+
+1. layer图层命名导致
+
+通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。
+
+
+2. 因为存在多余的无用图层
+
+没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。
+
+
+3. 图层顺序导致
+
+因为aerialway_11的">
+    <meta name="twitter:url" content="http://localhost:2368/sublime-text-svg-path/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/02/hero-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="技术">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="720">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "使用sublime text编辑svg文件",
+    "url": "http://localhost:2368/sublime-text-svg-path/",
+    "datePublished": "2018-07-24T12:22:00.000Z",
+    "dateModified": "2020-02-29T13:47:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/02/hero-1.png",
+        "width": 1080,
+        "height": 720
+    },
+    "keywords": "技术",
+    "description": "发现问题：未知问题导致finder中svg图像显示大小不同\n\n\n我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。\n\n通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。\n\n\n\n猜想可能出现问题的原因\n\n 1. 图层命名导致\n 2. 因为存在多余的无用图层\n 3. 图层顺序导致\n 4. 代码行数导致\n 5. 代码内容出错\n\n\n验证猜想\n\n\n1. layer图层命名导致\n\n通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。\n\n\n2. 因为存在多余的无用图层\n\n没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。\n\n\n3. 图层顺序导致\n\n因为aerialway_11的",
+    "mainEntityOfPage": "http://localhost:2368/sublime-text-svg-path/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="4936191ae23ea50aef0723c6b5" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=6c9bd47ebb"></script><style>:root {--ghost-accent-color: #000000;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=6c9bd47ebb.css">
+	</head>
+	<body class="post-template tag-code tag-hash-import-2023-05-19-07-30 global-post-authors-disable">
+		<div class="global-wrap">
+			<div class="section-content-wrap">
+				<div class="section-header wrap">
+	<header class="header-wrap flex">
+		<div class="header-logo">
+			<div class="is-logo"><a href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a></div>
+
+		</div>
+		<div class="header-nav">
+			<nav class="nav-wrap">
+				<label for="toggle" class="nav-label hamburger hamburger-minus">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</label>
+				<input type="checkbox" id="toggle" class="nav-toggle">
+				<ul class="nav-list">
+					
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+					<li class="section-members-login-panel">
+	<a class="members-signin" href="http://localhost:2368/signin/">Sign in</a>
+	<a class="members-signup" href="http://localhost:2368/signup/">Sign up</a>
+</li>									</ul>
+			</nav>
+		</div>
+		<div class="blog-description flex">柏拉图说:乌托邦是个理想国</div>
+	</header>
+</div>				<article>
+	<div class="section-featured is-featured-image">
+	<div class="featured-image" style="background-image: url(../content/images/2020/02/hero-1.png)"></div>
+	<div class="featured-wrap flex">
+			<div class="featured-content">
+				<div class="tags-wrap">
+					<a class="post-tag global-tag" href="../tag/code/index.html">技术</a>
+				</div>
+				<h1 class="white">使用sublime text编辑svg文件</h1>
+				<div class="item-meta white">
+					<span>by</span>
+					<a href="../author/youngbeom-2/index.html">youngbeom</a>
+					<time datetime="2018-07-24">5 年前</time>
+					<span class="reading-time"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M10.1907692,24 C4.5625628,24 0,19.4374372 0,13.8092308 C0,8.18102433 4.5625628,3.61846154 10.1907692,3.61846154 C15.8189757,3.61846154 20.3815385,8.18102433 20.3815385,13.8092308 C20.3815385,19.4374372 15.8189757,24 10.1907692,24 Z M10.1907692,22 C14.7144062,22 18.3815385,18.3328677 18.3815385,13.8092308 C18.3815385,9.28559383 14.7144062,5.61846154 10.1907692,5.61846154 C5.6671323,5.61846154 2,9.28559383 2,13.8092308 C2,18.3328677 5.6671323,22 10.1907692,22 Z" id="Oval"></path><path d="M7.53230769,2.32923077 C6.98002294,2.32923077 6.53230769,1.88151552 6.53230769,1.32923077 C6.53230769,0.776946019 6.98002294,0.329230769 7.53230769,0.329230769 L12.9225711,0.329230769 C13.4748559,0.329230769 13.9225711,0.776946019 13.9225711,1.32923077 C13.9225711,1.88151552 13.4748559,2.32923077 12.9225711,2.32923077 L7.53230769,2.32923077 Z" id="Line-2"></path><path d="M13.2928932,9.29289322 C13.6834175,8.90236893 14.3165825,8.90236893 14.7071068,9.29289322 C15.0976311,9.68341751 15.0976311,10.3165825 14.7071068,10.7071068 L10.897876,14.5163376 C10.5073517,14.9068618 9.87418674,14.9068618 9.48366245,14.5163376 C9.09313816,14.1258133 9.09313816,13.4926483 9.48366245,13.102124 L13.2928932,9.29289322 Z" id="Line"></path></svg> 9 min read</span>
+				</div>
+		</div>
+	</div>
+</div>	<div class="section-post wrap">
+		<div class="post-wrap ">
+			<h2 id="-finder-svg-">发现问题：未知问题导致finder中svg图像显示大小不同</h2><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-1.png" class="kg-image" alt loading="lazy"></figure><p><br>我们知道svg是基于xml的代码,出现这个问题的时候最先想到的是表现形式的不同一定是因为内部代码的格式或者是写法不同的,所以用sublime打开两个svg文件,发现内部的代码确实是不同的。</p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-2.png" class="kg-image" alt loading="lazy"></figure><p>通过分析可以看到,大图svg的代码是一行写出来的,而小图svg的代码是用了6行,还有在代码的细节上也有些许差异,不光是代码层面,在我用AI打开svg文件的时候发现图层上的表现也是不一样的。<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-3.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-4.png" class="kg-image" alt loading="lazy"></figure><h2 id="-">猜想可能出现问题的原因</h2><ol><li>图层命名导致</li><li>因为存在多余的无用图层</li><li>图层顺序导致</li><li>代码行数导致</li><li>代码内容出错</li></ol><h2 id="--1">验证猜想</h2><h3 id="1-layer-">1. layer图层命名导致</h3><p>通过分析accessories_11和aerialway_11的图层命名不同,想通过更改并统一命名来调试达到目的,发现并不能实现最终效果,猜想错误。</p><h3 id="2-">2. 因为存在多余的无用图层</h3><p>没有实际路径的图层在两个文件内都存在,但是删除了无用图层之后再次导出为svg发现还是没有变成大图。猜想错误。</p><h3 id="3-">3. 图层顺序导致</h3><p>因为aerialway_11的图层中复合路径的图层在最上面,所以认为是否因为顺序导致大小的不同,但是试验过后并没有得到验证。再后来查看代码上面<strong>path</strong>字段的时候发现,我们设计软件最底部的图层会在代码的最上面开始显示,也就是顺序设计软件和代码是相反的。</p><h3 id="4-">4. 代码行数导致</h3><p>通过sublime将accessories_11的代码从6行合并成1行再存储发现还是没有变成大图,和是否是多行但行还是没有关系。代码行数的不同在后文会有解释说明,主要是再导出的时候框选了minify导致丢失原有的格式。但是格式的不同并不会在设计软件的显示上出现差别,都是一样的图形显示。</p><h3 id="5-">5. 代码内容出错</h3><p>经过上面的实验,最终还是将问题集中在代码的内容上,发现两者在viewbox附近的代码存在不同,accessories_11部分相比aerialway_11在viewbox前面多了一段width="19" height="19”代码,我试着将这一段代码删除再存储,发现问题得到解决,基本可以判定是这段代码使文件在显示上存在差异。<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-5.png" class="kg-image" alt loading="lazy"></figure><p><br>后来在实际操作illustrator的时候发现需要框选responsive,这样最终在finder中看到的都是大图的图标,代码中也不会带有width和height,另外一个如果是框选minify的话会让svg的代码变成一行,丢掉原有的对其格式。也就是上文提及的代码行数问题。<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-6.png" class="kg-image" alt loading="lazy"></figure><p><br>上图为标准导出设定</p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-7.png" class="kg-image" alt loading="lazy"></figure><p><br>选择minify选项的svg代码</p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-8.png" class="kg-image" alt loading="lazy"></figure><p><br>没有选择minify选项的svg代码</p><h2 id="--2">统一代码格式</h2><p>现在剩下的就是希望我们的svg文件都能以大视图的方式显示在finder中,这对我们去操作查找图标帮助非常大,所以我们要批量将文件夹内的400多个svg文件中的**width="19" height="19”**代码删除,我想通过sublime查找和替换的方式去批量操作。</p><h2 id="--3">导出规范</h2><ol><li>layer name=file name</li><li>用export as</li><li>Use Artboards</li><li>styleing：Presentation Attributes<br>Font：svg<br>Image：Preserve<br>Object IDs：Layer Names<br>Decimal：3<br>Minify Responsive两个都勾选</li></ol><p>这里的Responsive就是会在导出的代码中不包含<strong>width="19" height="19”</strong>,会通过自适应的方式而不是去限定高宽的数值,这是在软件层面操作的时候设定的方式,但是如果在sublime中直接编辑删除上面的代码则是省去了打开AI的时间,甚至比Adobe的批处理更省时间。<br>规范制订的目的是为了防止数量特别多时也能快速的找到相应的位置和标记的代码,方便修改和做进一步的操作。</p><h2 id="-sublime-icon">应用：通过sublime批量操作修改icon</h2><p>通过sublime操作去修改svg的主要原因是因为省去了打开操作设计软件的步骤,直接查找替换会快速很多,节省了大量的时间。</p><h3 id="--4">操作说明</h3><p>首先我们频繁会改动的svg主要集中在默认的icon,不包含世界杯地图等这样的特殊样式地图,以交通类目下的bicycle为例,icon主要是分为两个部分,交通主题色圆形的背景部分 <strong>circle cx="9.5" cy="9.5" r="9.5" fill="#6c7"</strong> 和背景上面的自行车图形部分 <strong>path d="M10.5,5.5a.5.5,0,0,0,0,1H11v.7L8.3,8.8,7.7,7.5h.7a.5.5,0,0,0,0-1h-2a.5.5,0,0,0,0,1h.2L7,8.6c-.2,0-.4-.1-.6-.1A2.475,2.475,0,0,0,4,11.046L4,11.1a2.6,2.6,0,0,0,2.5,2.4A2.476,2.476,0,0,0,9,11.049V11H9a2.011,2.011,0,0,0-.4-1.3l2.5-1.4.4.4A2.526,2.526,0,0,0,10,11a2.5,2.5,0,1,0,2.7-2.5L12,7.8V6a.457.457,0,0,0-.4-.5Zm-4,4A1.5,1.5,0,1,1,5,11,1.5,1.5,0,0,1,6.5,9.5Zm6,0h0A1.454,1.454,0,0,1,14,10.9V11a1.5,1.5,0,0,1-3,0,1.473,1.473,0,0,1,1.445-1.5Z" fill="#fff"</strong><br>这两部分的代码会经常修改的是里面的颜色部分,为了方便归类和修改我讲所有的icon都分成了几大类<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-9.png" class="kg-image" alt loading="lazy"></figure><p><br>在默认主题下是上述代码中的颜色,但是在新的样式light主题中icon如果太过鲜艳会吸引过多的视觉注意,这违背了最初的设计目标,所以我们选择了灰色背景白色图标的方式,在sublime修改几十个图标颜色替换的操作只需要不到一分钟,下面分解具体的操作。<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-10.jpg" class="kg-image" alt loading="lazy"></figure><p><strong>1. 用sublime打开交通类图标所在的文件夹</strong><br>file—open—图标所在文件夹<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-11.png" class="kg-image" alt loading="lazy"></figure><p><strong>2. 在文件内查找</strong><br>find—find in files(com+shift+F)—输入要替换的内容<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-12.png" class="kg-image" alt loading="lazy"></figure><p><strong>3. 分别替换背景和图标颜色</strong><br>在find输入框中填写需要替换的16进制颜色代码,在replace输入框中填写新的代码,之后点击右下角的<strong>Replace</strong>之后点击file—save all,操作完成后就能在文件夹内看到变化后的图标。<br></p><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-13.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/07/coding-sprite-svg-14.png" class="kg-image" alt loading="lazy"></figure><p><br><strong>4. 之后就可以通过脚本命令行来制作sprits了,在sourcetree中提交完修改就能在测试服务器中看到新的效果了.</strong></p><h2 id="--5">总结</h2><h3 id="--6">简单高效</h3><p>通过代码层面去管理和编辑svg是新的一种尝试,能让我们更加了解svg这种矢量格式,也能通过这种方式大大增加工作效率,最初接触这项任务时完成四百多张图标的操作用了将近两个工作日,而现在只需要不到十分钟就能操作完成并且部署看到新的效果。</p><h3 id="--7">便于管理</h3><p>通过发现的问题简单的操作了一下关于图标的管理及制作的一些小细节,发现通过整理和归类对于svg的管理也带来了帮助,通过文件夹的归类方式上也能让设计思维得到表达,但是在具体在设计实施的过程中也可能会因为一些需求进行相应的变化,目前的方案只是适用于比较简单重复性比较高的任务,如果后期变得复杂还需要引入正则表达式的方式进行增删、查找和编辑,但是最终目标还是提高效率和设计质量,如果对于上述方案有新的想法和建议欢迎补充！</p>
+		</div>
+		<div class="section-post-authors post-authors flex  post-author-single first">
+	<div class="author-label">
+		<span>Read more posts by this author</span>
+	</div>
+	<div class="author-wrap flex">
+		<a href="../author/youngbeom-2/index.html" class="item-link-overlay"></a>
+		<div class="author-profile-image" style="background-image: url(http://localhost:2368/content/images/2022/06/favicon.png)"></div>
+		<div class="author-content">
+			<h4 class="is-bio no-cover-image"><a href="../author/youngbeom-2/index.html">youngbeom</a></h4>
+			<p>天生闲不下来的折腾青年 设计师 工具控 理想主义者</p>
+		</div>
+	</div>
+</div>		<div class="post-meta">
+			<div class="post-share">
+	<a class="twitter" href="https://twitter.com/intent/tweet?text=%E4%BD%BF%E7%94%A8sublime%20text%E7%BC%96%E8%BE%91svg%E6%96%87%E4%BB%B6&amp;url=http://localhost:2368/sublime-text-svg-path/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/sublime-text-svg-path/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+	<a href="javascript:" class="copy" id="copy" data-clipboard-target="#link-value"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.33 13.04h-4.155v4.154h-2.078v-4.155H9.942v-2.077h4.155V6.806h2.078v4.156h4.154v2.077zM8.902 18.58a6.582 6.582 0 0 1 0-13.162c.068 0 .135.007.202.009a8.874 8.874 0 0 0-.001 13.144c-.067 0-.133.009-.2.009zm6.194-15.484a8.876 8.876 0 0 0-3.087.56A8.904 8.904 0 0 0 0 12a8.903 8.903 0 0 0 8.903 8.905 8.893 8.893 0 0 0 3.103-.563 8.854 8.854 0 0 0 3.09.563A8.903 8.903 0 0 0 24 12a8.904 8.904 0 0 0-8.903-8.903z"/></svg></a>
+	<span class="copy-popup">The link has been copied!</span>
+	<input type="text" value="http://localhost:2368/sublime-text-svg-path/" id="link-value">
+</div>		</div>
+	</div>
+</article>
+<aside class="section-prev-next">
+    <div class="prev-next-wrap">
+        <a href="../convert-to-grayscale/index.html" class="prev-post post tag-design tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2020/03/Group-123.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Newer Post</h5>
+                <h3>UI稿快速去色的方法</h3>
+            </section>
+        </a>
+        <a href="../override-color-in-sketch-icon-sets/index.html" class="next-post post tag-design tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2020/03/hero.png)"></div>
+            <section class="prev-next-title">
+                <h5>Older Post</h5>
+                <h3>sketch设计工作流-利用色板遮罩制作图标嵌套组件</h3>
+            </section>
+        </a>
+    </div>
+</aside><div class="section-disqus">
+	</div>
+
+			</div>
+			<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			<a class="is-logo" href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a>
+		</div>
+		<div class="footer-nav">
+			<ul class="nav-list">
+				
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+			</ul>
+		</div>
+		<div class="footer-social-links flex">
+			<a href="https://www.facebook.com/youngbeomshen/" aria-label="link Facebook"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+			<a href="https://twitter.com/ShinYoungboom" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+	</div>
+	<div class="footer-copyright">
+		&copy; 2023 <a href="../index.html">乌托邦是个理想国</a>.
+		All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Nurui</a>.
+	</div>
+</footer>		</div>
+		<div id="notifications" class="global-notification">
+	<div class="subscribe">You’ve successfully subscribed to 乌托邦是个理想国</div>
+	<div class="signin">Welcome back! You’ve successfully signed in.</div>
+	<div class="signup">Great! You’ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Check your email for magic link to sign-in.</div>
+</div>
+				<script src="../assets/js/post.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/global.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/ityped.js%3Fv=6c9bd47ebb"></script>
+		
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>

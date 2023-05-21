@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="auto-dark-mode">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>使用 极狐GitLab + Gitbook 发布 Handbook文档</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="../assets/css/screen.css%3Fv=6c9bd47ebb.css">
+		<link rel="icon" href="../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用 极狐GitLab + Gitbook 发布 Handbook文档">
+    <meta property="og:description" content="前言
+
+GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。
+
+在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。
+
+我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：
+
+ * 支持Markdown
+ * 支持团队协作
+ * 文档有版本历史
+ * 支持导出HTML和PDF格式
+ * 支持树形目录">
+    <meta property="og:url" content="http://localhost:2368/jihugitlab-gitbook/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg">
+    <meta property="article:published_time" content="2022-03-28T01:58:00.000Z">
+    <meta property="article:modified_time" content="2022-03-31T12:58:56.000Z">
+    <meta property="article:tag" content="设计">
+    <meta property="article:tag" content="技术">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用 极狐GitLab + Gitbook 发布 Handbook文档">
+    <meta name="twitter:description" content="前言
+
+GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。
+
+在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。
+
+我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：
+
+ * 支持Markdown
+ * 支持团队协作
+ * 文档有版本历史
+ * 支持导出HTML和PDF格式
+ * 支持树形目录">
+    <meta name="twitter:url" content="http://localhost:2368/jihugitlab-gitbook/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计, 技术">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="2160">
+    <meta property="og:image:height" content="1440">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "使用 极狐GitLab + Gitbook 发布 Handbook文档",
+    "url": "http://localhost:2368/jihugitlab-gitbook/",
+    "datePublished": "2022-03-28T01:58:00.000Z",
+    "dateModified": "2022-03-31T12:58:56.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg",
+        "width": 2160,
+        "height": 1440
+    },
+    "keywords": "设计, 技术",
+    "description": "前言\n\nGitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。\n\n在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。\n\n我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：\n\n * 支持Markdown\n * 支持团队协作\n * 文档有版本历史\n * 支持导出HTML和PDF格式\n * 支持树形目录\n ",
+    "mainEntityOfPage": "http://localhost:2368/jihugitlab-gitbook/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="4936191ae23ea50aef0723c6b5" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=6c9bd47ebb"></script><style>:root {--ghost-accent-color: #000000;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=6c9bd47ebb.css">
+	</head>
+	<body class="post-template tag-design tag-code tag-hash-import-2023-05-19-07-30 global-post-authors-disable">
+		<div class="global-wrap">
+			<div class="section-content-wrap">
+				<div class="section-header wrap">
+	<header class="header-wrap flex">
+		<div class="header-logo">
+			<div class="is-logo"><a href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a></div>
+
+		</div>
+		<div class="header-nav">
+			<nav class="nav-wrap">
+				<label for="toggle" class="nav-label hamburger hamburger-minus">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</label>
+				<input type="checkbox" id="toggle" class="nav-toggle">
+				<ul class="nav-list">
+					
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+					<li class="section-members-login-panel">
+	<a class="members-signin" href="http://localhost:2368/signin/">Sign in</a>
+	<a class="members-signup" href="http://localhost:2368/signup/">Sign up</a>
+</li>									</ul>
+			</nav>
+		</div>
+		<div class="blog-description flex">柏拉图说:乌托邦是个理想国</div>
+	</header>
+</div>				<article>
+	<div class="section-featured is-featured-image">
+	<div class="featured-image" style="background-image: url(../content/images/2022/03/Jihu_GitLab-gitbook-1.jpg)"></div>
+	<div class="featured-wrap flex">
+			<div class="featured-content">
+				<div class="tags-wrap">
+					<a class="post-tag global-tag" href="../tag/design/index.html">设计</a>
+					<a class="post-tag global-tag" href="../tag/code/index.html">技术</a>
+				</div>
+				<h1 class="white">使用 极狐GitLab + Gitbook 发布 Handbook文档</h1>
+				<div class="item-meta white">
+					<span>by</span>
+					<a href="../author/youngbeom-2/index.html">youngbeom</a>
+					<time datetime="2022-03-28">1 年前</time>
+					<span class="reading-time"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M10.1907692,24 C4.5625628,24 0,19.4374372 0,13.8092308 C0,8.18102433 4.5625628,3.61846154 10.1907692,3.61846154 C15.8189757,3.61846154 20.3815385,8.18102433 20.3815385,13.8092308 C20.3815385,19.4374372 15.8189757,24 10.1907692,24 Z M10.1907692,22 C14.7144062,22 18.3815385,18.3328677 18.3815385,13.8092308 C18.3815385,9.28559383 14.7144062,5.61846154 10.1907692,5.61846154 C5.6671323,5.61846154 2,9.28559383 2,13.8092308 C2,18.3328677 5.6671323,22 10.1907692,22 Z" id="Oval"></path><path d="M7.53230769,2.32923077 C6.98002294,2.32923077 6.53230769,1.88151552 6.53230769,1.32923077 C6.53230769,0.776946019 6.98002294,0.329230769 7.53230769,0.329230769 L12.9225711,0.329230769 C13.4748559,0.329230769 13.9225711,0.776946019 13.9225711,1.32923077 C13.9225711,1.88151552 13.4748559,2.32923077 12.9225711,2.32923077 L7.53230769,2.32923077 Z" id="Line-2"></path><path d="M13.2928932,9.29289322 C13.6834175,8.90236893 14.3165825,8.90236893 14.7071068,9.29289322 C15.0976311,9.68341751 15.0976311,10.3165825 14.7071068,10.7071068 L10.897876,14.5163376 C10.5073517,14.9068618 9.87418674,14.9068618 9.48366245,14.5163376 C9.09313816,14.1258133 9.09313816,13.4926483 9.48366245,13.102124 L13.2928932,9.29289322 Z" id="Line"></path></svg> 9 min read</span>
+				</div>
+		</div>
+	</div>
+</div>	<div class="section-post wrap">
+		<div class="post-wrap ">
+			<h2 id="-">前言</h2><p>GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。</p><p>在学习和了解的过程中我发现了 <a href="https://about.gitlab.com/handbook/engineering/ux/?ref=localhost">GitLab 的 UX Handbook</a>，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-1.png" class="kg-image" alt loading="lazy"></figure><p>我们通过查看这份 <a href="https://gitlab.com/gitlab-com/www-gitlab-com/-/tree/master/sites/handbook/source/handbook/engineering/ux?ref=localhost">UX Handbook 的源码</a> 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 <a href="https://about.gitlab.com/handbook/engineering/ux/?ref=localhost">UX Handbook 首页</a>看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了<a href="https://www.gitbook.com/?ref=localhost">Gitbook</a>，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：</p><ul><li>支持Markdown</li><li>支持团队协作</li><li>文档有版本历史</li><li>支持导出HTML和PDF格式</li><li>支持树形目录</li><li>有非常丰富的插件可以拓展</li></ul><p>从去年下半年开始，为了能让自己更好的学习和了解这份文档中的内容，我开始利用业余时间将全部的英文内容翻译整理成中文文档，这样做一方面是让自己更好的理解文档中分享的设计相关的方法，另一方面也可以分享给更多国内感兴趣的朋友，更加方便阅读和理解。目前 GitLab 的 UX handbook 已经通过 GitLab 自带的 Pages 发布，项目地址是：<a href="https://gitlab.com/youngbeomshin/ux?ref=localhost">中文版 UX 手册</a>，大家可以通过 <a href="https://youngbeomshin.gitlab.io/ux/?ref=localhost">这个域名</a> 进行访问。目前还有一小部分内容没有完成翻译，完成的部分也有很多不专业的地方，也欢迎大家一起参与。下图是在本地生成的 Gitbook 预览页面。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-2.png" class="kg-image" alt loading="lazy"></figure><p>下面的内容我将分享我是如何通过使用 极狐GitLab + Gitbook 来完成这份 Handbook ，也会分享一些比较基础好用的 Gitbook 插件。</p><h2 id="-gitlab-gitbook-">在 极狐GitLab 创建 Gitbook 项目</h2><ul><li>首先注册 极狐GitLab 账号，登录成功后点击顶部导航栏中的 <strong>新建项目/仓库</strong></li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-3.png" class="kg-image" alt loading="lazy"></figure><ul><li>选择<strong>从模板创建</strong></li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-4.png" class="kg-image" alt loading="lazy"></figure><ul><li>选择 <strong>Pages/Gitbook </strong>模板，极狐GitLab 在创建时提供了非常多的模板供大家选择。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-5.png" class="kg-image" alt loading="lazy"></figure><ul><li>输入项目名称和项目标识串，点击<strong>新建项目</strong>就完成创建了。<br><em>注：如果你想让其他人访问该项目生成的 pages 页面，那么在创建时需要将可见性级别设置为 <strong>公开</strong></em></li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-6.png" class="kg-image" alt loading="lazy"></figure><ul><li>创建成功后我们就获得了一个 Gitbook 项目，里面除了 readme 和 summary 文件外还包含了一个 GitLab 流水线触发脚本，它执行的作业包括 test、deploy、以及 pulic，都可以在用户将代码更改提交到 master 分支后自动触发流水线执行。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-7.png" class="kg-image" alt loading="lazy"></figure><h2 id="--1">克隆项目</h2><p>首先将生成的 Gitbook 克隆到本地，你可以选择 SSH / HTTPS 两种方式</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-8.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2022/03/gitlab-gitbook-9.png" class="kg-image" alt loading="lazy"><figcaption>输入命令 git clone + SSH/HTTPS 链接，我是通过 https 的方式将代码克隆到了我的本地测试仓库文件夹中。</figcaption></figure><h2 id="gitbook-">Gitbook 安装</h2><p>我使用的系统环境是 MacOS 12.3、Node.js 版本是 v10.22.0，安装的过程非常的简单，在命令行中输入<br><code>npm install gitbook-cli -g</code></p><p>安装成功，我们就可以使用 Gitbook 的命令来进行各种操作了<br>进入我们克隆的项目目录<br><code>cd gitbook-cool</code>  (gitbook-cool替换成你的项目标识符)</p><h3 id="-book">预览 book</h3><p>我们可以先预览一下发布之后的页面，在终端输入<br><code>gitbook build</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-10.png" class="kg-image" alt loading="lazy"></figure><p><code>gitbook serve</code></p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-11.png" class="kg-image" alt loading="lazy"></figure><p>我们就可以通过在浏览器输入： <a href="http://localhost:4000/?ref=localhost">http://localhost:4000</a> 来预览目前的样式了。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-12.png" class="kg-image" alt loading="lazy"></figure><h3 id="--2">目录</h3><pre><code># Summary
+
+* [前言](README.md)
+* [第一章](xx.md)
+* [第二章](xx.md)
+* [第三章](xx.md)
+</code></pre><p><code>xx.md</code>就是我们每个章节独立的 markdown 文件，所以用 Gitbook 写一本书真的非常方便，一个目录加上一些章节的 markdown 文件，你的书就完成了，接下来就可以完善内容了。</p><h2 id="--3">插件</h2><p>Gitbook 作为一款开源的软件，也有一些非常方便的插件可以使用，有了插件之后可以让文档的阅读和使用更加的高效，下面我列举了一些我在使用的插件。</p><pre><code>{
+     “plugins”: [
+     	  ”search-plus”,
+          “youtubex”,
+          “pageTop”,
+          “sharing”,
+          “editlink”,
+          “rss”,
+          “tbfed-pagefooter”,
+          “expandable-chapters-small”,
+          “anchor-navigation-ex”,
+          “tbfed-pagefooter”,
+          ”copy-code-button”,
+          ”splitter”,
+          ”highlight”
+     ]
+}
+</code></pre><p>插件的安装以及使用方式：</p><ol><li>在 book.json 的 plugins 参数中添加插件名。</li><li>终端使用 gitbook install - 插件名 来安装插件，或使用 NPM 命令来单独安装：npm install gitbook-plugin-插件名。</li><li>重启服务或者重新打包就能看见效果。</li><li>如果使用 gitbook install 安装的很慢，建议使用 npm init 初始化一个package.json 文件，然后每个包通过 npm 命令安装，以后就可以通过 npm install 一键快速安装依赖包了。</li></ol><h3 id="search-plus-"><a href="https://github.com/lwdgit/gitbook-plugin-search-plus?ref=localhost">search-plus</a> 高级搜索</h3><p>Search-plus支持中文搜索，在使用这个插件之前需要将默认的 search 和 lunr 插件删掉。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/search-plus.gif" class="kg-image" alt loading="lazy"></figure><h3 id="editlink-"><a href="https://github.com/rtCamp/gitbook-plugin-edit-link?ref=localhost">editlink</a>  在线编辑文件</h3><pre><code>"editlink": {
+            "base": "https://jihulab.com/jihulab/product/design/design-handbook/-/tree/master",
+            "label": "编辑此页",
+            "multilingual": false
+</code></pre><p>通过这款插件可以在页面中发现需要更改的段落时，快速定位到代码仓库中的位置。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/Editlink-1.gif" class="kg-image" alt loading="lazy"></figure><h3 id="tbfed-pagefooter"><a href="https://github.com/FastGitORG/gitbook-plugin-tbfed-pagefooter?ref=localhost">tbfed-pagefooter</a></h3><p>自定义页脚，可以在页脚添加 copyright 信息以及最后修改时间。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-13.png" class="kg-image" alt loading="lazy"></figure><h3 id="youtubex"><a href="https://github.com/manchiyiu/gitbook-plugin-youtubex?ref=localhost">youtubex</a></h3><p>支持插入 YouTube 视频 ，例如 <a href="https://www.youtube.com/watch?v=dod5EUYYgDk&ref=localhost">How to structure data in Dovetail using import</a> 这个视频，可以像下面这么插入到 Gitbook 中，好处是视频的视窗大小会自动适应浏览器页面的大小，并且可以在文章中直接点击观看视频。</p><pre><code>{%YouTube%}dod5EUYYgDk{%endyoutube%}
+</code></pre><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/YouTubeX.gif" class="kg-image" alt loading="lazy"></figure><h3 id="splitter"><a href="https://github.com/yoshidax/gitbook-plugin-splitter?ref=localhost">splitter</a></h3><p>使用这款插件可以自由调节侧边栏的宽度，如果文档中有的标题长度过长可以使用这款插件。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/splitter.gif" class="kg-image" alt loading="lazy"></figure><h3 id="anchor-navigation-ex"><a href="https://github.com/zq99299/gitbook-plugin-anchor-navigation-ex?ref=localhost">anchor-navigation-ex</a></h3><p>使用该插件可以在文章的右上角显示一个目录图标，鼠标移动至图标上方可以显示文章内的目录结构，方便快速的进行预览及跳转。还可以在页面左上角切换深色模式等主题以及文字类型。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/anchor-navigation-ex.gif" class="kg-image" alt loading="lazy"></figure><h2 id="-gitlab-pages-">使用 gitlab pages 发布</h2><p>当我们完成了所有的内容修改之后，就需要一个地方能够发布我们的内容，这时候 Gitlab pages 就为我们提供了非常大的便利，我们不需要单独启用一台服务器，注册并绑定一个域名，而是通过 Gitlab 自带的 pages 功能轻松发布一个可供所有人访问的站点。</p><p>目前因为极狐Gitlab 暂未开放 pages 功能，所以我通过将 极狐GitLab 仓库中的代码 mirror 到 Gitlab 的方式，在 Gitlab 生成一个 pages。</p><p>我们可以在 极狐Gitlab 的代码仓库中点击左侧面板 <strong>设置-仓库-镜像仓库</strong> 来设置镜像到 Gitlab 中。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-14.png" class="kg-image" alt loading="lazy"></figure><p>完成镜像操作后，我们返回 Gitlab 的 gitbook 仓库，点击左侧面板中 <strong>设置-pages</strong> 来查看项目的公网链接。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-15.png" class="kg-image" alt loading="lazy"></figure><p>到这一步为止，我们的项目就已经是发布并且可以访问的状态了。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/gitlab-gitbook-16.png" class="kg-image" alt loading="lazy"></figure>
+		</div>
+		<div class="section-post-authors post-authors flex  post-author-single first">
+	<div class="author-label">
+		<span>Read more posts by this author</span>
+	</div>
+	<div class="author-wrap flex">
+		<a href="../author/youngbeom-2/index.html" class="item-link-overlay"></a>
+		<div class="author-profile-image" style="background-image: url(http://localhost:2368/content/images/2022/06/favicon.png)"></div>
+		<div class="author-content">
+			<h4 class="is-bio no-cover-image"><a href="../author/youngbeom-2/index.html">youngbeom</a></h4>
+			<p>天生闲不下来的折腾青年 设计师 工具控 理想主义者</p>
+		</div>
+	</div>
+</div>		<div class="post-meta">
+			<div class="post-share">
+	<a class="twitter" href="https://twitter.com/intent/tweet?text=%E4%BD%BF%E7%94%A8%20%E6%9E%81%E7%8B%90GitLab%20%2B%20Gitbook%20%E5%8F%91%E5%B8%83%20Handbook%E6%96%87%E6%A1%A3&amp;url=http://localhost:2368/jihugitlab-gitbook/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/jihugitlab-gitbook/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+	<a href="javascript:" class="copy" id="copy" data-clipboard-target="#link-value"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.33 13.04h-4.155v4.154h-2.078v-4.155H9.942v-2.077h4.155V6.806h2.078v4.156h4.154v2.077zM8.902 18.58a6.582 6.582 0 0 1 0-13.162c.068 0 .135.007.202.009a8.874 8.874 0 0 0-.001 13.144c-.067 0-.133.009-.2.009zm6.194-15.484a8.876 8.876 0 0 0-3.087.56A8.904 8.904 0 0 0 0 12a8.903 8.903 0 0 0 8.903 8.905 8.893 8.893 0 0 0 3.103-.563 8.854 8.854 0 0 0 3.09.563A8.903 8.903 0 0 0 24 12a8.904 8.904 0 0 0-8.903-8.903z"/></svg></a>
+	<span class="copy-popup">The link has been copied!</span>
+	<input type="text" value="http://localhost:2368/jihugitlab-gitbook/" id="link-value">
+</div>		</div>
+	</div>
+</article>
+<aside class="section-prev-next">
+    <div class="prev-next-wrap">
+        <a href="../one-year-remote/index.html" class="prev-post post tag-life tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2022/05/remote-work.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Newer Post</h5>
+                <h3>记录我远程办公的第一年</h3>
+            </section>
+        </a>
+        <a href="../jihugitlab-design-management/index.html" class="next-post post tag-design tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2022/03/design-management-1.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Older Post</h5>
+                <h3>快速上手极狐GitLab设计管理功能</h3>
+            </section>
+        </a>
+    </div>
+</aside><div class="section-disqus">
+	</div>
+
+			</div>
+			<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			<a class="is-logo" href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a>
+		</div>
+		<div class="footer-nav">
+			<ul class="nav-list">
+				
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+			</ul>
+		</div>
+		<div class="footer-social-links flex">
+			<a href="https://www.facebook.com/youngbeomshen/" aria-label="link Facebook"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+			<a href="https://twitter.com/ShinYoungboom" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+	</div>
+	<div class="footer-copyright">
+		&copy; 2023 <a href="../index.html">乌托邦是个理想国</a>.
+		All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Nurui</a>.
+	</div>
+</footer>		</div>
+		<div id="notifications" class="global-notification">
+	<div class="subscribe">You’ve successfully subscribed to 乌托邦是个理想国</div>
+	<div class="signin">Welcome back! You’ve successfully signed in.</div>
+	<div class="signup">Great! You’ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Check your email for magic link to sign-in.</div>
+</div>
+				<script src="../assets/js/post.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/global.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/ityped.js%3Fv=6c9bd47ebb"></script>
+		
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="auto-dark-mode">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>地图UI设计工作流-从mapbox到sketch</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="../assets/css/screen.css%3Fv=6c9bd47ebb.css">
+		<link rel="icon" href="../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="地图UI设计工作流-从mapbox到sketch">
+    <meta property="og:description" content="前言
+
+因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。
+
+
+但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。
+
+后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这">
+    <meta property="og:url" content="http://localhost:2368/mapbox-to-sketch/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg">
+    <meta property="article:published_time" content="2018-07-03T04:07:00.000Z">
+    <meta property="article:modified_time" content="2020-04-10T10:27:32.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="地图UI设计工作流-从mapbox到sketch">
+    <meta name="twitter:description" content="前言
+
+因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。
+
+
+但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。
+
+后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这">
+    <meta name="twitter:url" content="http://localhost:2368/mapbox-to-sketch/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="1900">
+    <meta property="og:image:height" content="870">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "地图UI设计工作流-从mapbox到sketch",
+    "url": "http://localhost:2368/mapbox-to-sketch/",
+    "datePublished": "2018-07-03T04:07:00.000Z",
+    "dateModified": "2020-04-10T10:27:32.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg",
+        "width": 1900,
+        "height": 870
+    },
+    "keywords": "设计",
+    "description": "前言\n\n因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。\n\n\n但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。\n\n后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这",
+    "mainEntityOfPage": "http://localhost:2368/mapbox-to-sketch/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="4936191ae23ea50aef0723c6b5" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=6c9bd47ebb"></script><style>:root {--ghost-accent-color: #000000;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=6c9bd47ebb.css">
+	</head>
+	<body class="post-template tag-design tag-hash-import-2023-05-19-07-30 global-post-authors-disable">
+		<div class="global-wrap">
+			<div class="section-content-wrap">
+				<div class="section-header wrap">
+	<header class="header-wrap flex">
+		<div class="header-logo">
+			<div class="is-logo"><a href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a></div>
+
+		</div>
+		<div class="header-nav">
+			<nav class="nav-wrap">
+				<label for="toggle" class="nav-label hamburger hamburger-minus">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</label>
+				<input type="checkbox" id="toggle" class="nav-toggle">
+				<ul class="nav-list">
+					
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+					<li class="section-members-login-panel">
+	<a class="members-signin" href="http://localhost:2368/signin/">Sign in</a>
+	<a class="members-signup" href="http://localhost:2368/signup/">Sign up</a>
+</li>									</ul>
+			</nav>
+		</div>
+		<div class="blog-description flex">柏拉图说:乌托邦是个理想国</div>
+	</header>
+</div>				<article>
+	<div class="section-featured is-featured-image">
+	<div class="featured-image" style="background-image: url(../content/images/2020/03/mapbox-to-sketch-bg.jpg)"></div>
+	<div class="featured-wrap flex">
+			<div class="featured-content">
+				<div class="tags-wrap">
+					<a class="post-tag global-tag" href="../tag/design/index.html">设计</a>
+				</div>
+				<h1 class="white">地图UI设计工作流-从mapbox到sketch</h1>
+				<div class="item-meta white">
+					<span>by</span>
+					<a href="../author/youngbeom-2/index.html">youngbeom</a>
+					<time datetime="2018-07-03">5 年前</time>
+					<span class="reading-time"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M10.1907692,24 C4.5625628,24 0,19.4374372 0,13.8092308 C0,8.18102433 4.5625628,3.61846154 10.1907692,3.61846154 C15.8189757,3.61846154 20.3815385,8.18102433 20.3815385,13.8092308 C20.3815385,19.4374372 15.8189757,24 10.1907692,24 Z M10.1907692,22 C14.7144062,22 18.3815385,18.3328677 18.3815385,13.8092308 C18.3815385,9.28559383 14.7144062,5.61846154 10.1907692,5.61846154 C5.6671323,5.61846154 2,9.28559383 2,13.8092308 C2,18.3328677 5.6671323,22 10.1907692,22 Z" id="Oval"></path><path d="M7.53230769,2.32923077 C6.98002294,2.32923077 6.53230769,1.88151552 6.53230769,1.32923077 C6.53230769,0.776946019 6.98002294,0.329230769 7.53230769,0.329230769 L12.9225711,0.329230769 C13.4748559,0.329230769 13.9225711,0.776946019 13.9225711,1.32923077 C13.9225711,1.88151552 13.4748559,2.32923077 12.9225711,2.32923077 L7.53230769,2.32923077 Z" id="Line-2"></path><path d="M13.2928932,9.29289322 C13.6834175,8.90236893 14.3165825,8.90236893 14.7071068,9.29289322 C15.0976311,9.68341751 15.0976311,10.3165825 14.7071068,10.7071068 L10.897876,14.5163376 C10.5073517,14.9068618 9.87418674,14.9068618 9.48366245,14.5163376 C9.09313816,14.1258133 9.09313816,13.4926483 9.48366245,13.102124 L13.2928932,9.29289322 Z" id="Line"></path></svg> 12 min read</span>
+				</div>
+		</div>
+	</div>
+</div>	<div class="section-post wrap">
+		<div class="post-wrap ">
+			<h2 id="-">前言</h2><p>因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是<a href="https://www.mapbox.com/?ref=localhost">mapbox studio</a>，另一个是maputnik，后者是瑞士的一个大学生<a href="https://github.com/lukasmartinelli?ref=localhost">Lukas Martinelli</a>创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。</p><p><br>但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的<a href="https://www.mapbox.com/augmented-reality/?ref=localhost">AR SDK</a>包以及<a href="https://www.mapbox.com/automotive/?ref=localhost">自动驾驶</a>相关的一些项目都是具有战略意义的一些产品。</p><p>后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这家小公司在开源这件事情上作出的贡献，因为他们的存在让各大公司在使用或搭建地图服务时相比只有谷歌时多了一份选择。</p><h2 id="carto-css">carto css</h2><p>起初在还未接触mapbox的时候还没有设计地图的概念，那时候的地图样式是通过<a href="https://tumluliu.gitbooks.io/carto_zh-cn/?ref=localhost">carto css</a>渲染出来的，样式几乎没有设计感，色彩的使用和搭配也是没有规范，翻出来很老旧的地图样式，效果就是下面这样的。</p><h3 id="--1">项目初期样式效果</h3><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/03/15.pic_hd.jpg" class="kg-image" alt loading="lazy"><figcaption>项目初期样式效果</figcaption></figure><h3 id="--2">改版后地图样式</h3><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2020/03/-----2018-07-18---12.47.32.png" class="kg-image" alt loading="lazy"><figcaption>改版后地图样式</figcaption></figure><h3 id="--3">设计中对地图的需求</h3><p>在很多之前的设计稿中，我需要用到地图界面在设计中时都会去百度截取所需的区域，然后将它粘贴到我的设计稿中，这样看起来的效果就是我们没有办法去“设计”地图，包括色板、图标、文字样式等。</p><h3 id="snazzy-maps">snazzy maps</h3><p><a href="https://snazzymaps.com/?ref=localhost">snazzy map</a>是基于谷歌地图重新设计样式的一个网站，网站内有非常多的样式可以学习，虽然很大程度上达到了定制化的目的，但是还是有非常多的限制，不能在数据或者更细节的样式上做调整，对于图层的支持上也不是很多。</p><h2 id="-mapbox">使用mapbox</h2><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-03---4.54.57.png" class="kg-image" alt loading="lazy"></figure><p>通过mapbox的官网介绍，他们是一家为web及移动应用提供位置服务及导航的平台。mapbox已经是一款非常强大的平台，对于我这样的设计师来讲已经满足了我几乎所有的需求(除了数据获取)，包括地图颜色、图标定制、字体库等。对于新上手的设计师mapbox studio也有一些设计样本提供学习和使用。</p><h3 id="-mapbox-studio-">使用mapbox studio设计地图样式</h3><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-03---5.16.56.png" class="kg-image" alt loading="lazy"></figure><p>首先你需要注册一个账号，通过这个账号会保留你所设计的样式，同时这个账号也是一个开发者账号，你可以通过平台提供的access token来将你设计的样式应用在网页或者移动应用当中。<br>注册完成后可以看到右上角有几个入口：</p><ul><li>home</li><li>styles</li><li>tilesets</li><li>datasets</li></ul><h3 id="--4">设计一款全新的地图样式</h3><p>点击style(样式)，进入后可以看到你设计过的全部的样式文件，如果你还没有设计过地图样式，这个部分会是空白的，点击create创建一款全新的地图，在这里你可以选择利用mapbox给你提供的基础样式的基础上进行创作，或者选择一款空白的地图来手动添加图层。</p><p><br>也可以选择第二种方式就是上传已有的样式文件来生成地图，这里的上传格式要求json格式的文件。</p><p><br>对于第一次操作的设计师来讲，最好的建议是先去观察体验基础款的地图样式设计，因为在这份地图里面包含了几乎所有的地图图层，包括道路，植被类型，用地类型，甚至兴趣点的数据和样式图标都是按照规范设定好的，这样就能知道数据的结构和mapbox的设计逻辑，其实进入设计面板大家很容易就能看到左边的图层栏很像Adobe的layer，就是一层一层覆盖的，从最基础的土地类型到覆盖在上面的植被到道路最后建筑和兴趣点，这就方便理解了。</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---3.30.49.png" class="kg-image" alt loading="lazy"></figure><p>点击creat就会打开<strong>地图样式编辑器</strong>这里就是所有的UI样式展现的地方，最核心的样式设计的界面！</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---3.35.02.png" class="kg-image" alt loading="lazy"></figure><p>点击左上角的<strong>add layer</strong>按钮去添加一个新的图层，点击**No tileset，click to select.**就会去手动的添加一个数据来源，这里的tile中文翻译过来是瓷砖 瓦片的意思，地图的样式就是一个一个的“瓦片”构成，如果大家在网络状态不好的时候打开地图就会发现界面的加载是一块一块的，这个就是瓦片。在mapbox中提供多种的数据来源比如：</p><ul><li>[image:EF92D06B-4F02-491B-BF8A-5C7ECFA9B67C-10857-00008FBFA8F01101/屏幕快照 2018-07-13 下午3.46.03.png]Mapbox Satellite</li><li>Mapbox Streets v7</li><li>Mapbox Traffic V1</li><li>Mapbox Terrain V2</li><li>也可以手动上传自己本地已有的数据</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---3.46.03.png" class="kg-image" alt loading="lazy"></figure><p>在这里我选择了Mapbox Streets v7里面的<strong>water</strong>类型的数据，有了数据源我们就可以创建图层对数据进行样式的编辑了。颜色可以设置在不同的zoom级显示不同的颜色，比如zoom比较小时海洋的颜色浅一些，zoom放大到高一些的时候颜色变成深蓝色，等等。除此之外还可以给海洋加上一些图案，比如波纹，设置透明度，描边等等…</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---3.49.05.png" class="kg-image" alt loading="lazy"></figure><p>对mapbox赋予颜色比如我给海洋的颜色赋值**HSL(210,29,80)**这样它就和陆地的视觉上出现差异，渐渐有了地图的雏形。</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---3.53.45.png" class="kg-image" alt loading="lazy"></figure><p>接下来我们可以添加更多的图层，比如国境线，我们在tileset里面选择<strong>admin</strong> 之后可以选择让他出现的层级，比如国境线让他在0～22的层级上出现，这样就会在放大到最大的层级时都有数据展现。</p><h3 id="--5">数据的展现方式</h3><p>根据数据的不同类型mapbox给出了不同的展现方式，</p><ul><li>fill</li><li>fill extrusion</li><li>line</li><li>circle</li><li>symbol</li><li>heatmap<br>这都是数据在地图上的不同展现类型，比如国境线是line，草坪是fill，带图标的兴趣点是symbol，或者如果你有纽约的出租车运营数据，你也可以将数据以热力图的形式用heatmap类型来展现。</li></ul><h3 id="-cartogram">创新的方式去设计地图样式-Cartogram</h3><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---4.35.53.png" class="kg-image" alt loading="lazy"></figure><p><a href="https://www.mapbox.com/cartogram/?ref=localhost">Cartogram</a>是mapbox官方提供的一款有意思的网站，他可以通过你拖拽一张图片去自动分析照片中的配色，然后给出他的一个配色选择，但是他也不是所有的图层都支持，现在的版本中Cartogram支持<strong>land</strong> <strong>building</strong>  <strong>water</strong> <strong>label</strong> 这四种图层类型占据了地图组成的大部分面积，所以四种类型的色彩发生变化对整个视觉的改变是非常大的，我们在设计的时候抓取风格调性可以通过这种方式来设计。</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---5.41.03.png" class="kg-image" alt loading="lazy"></figure><p>我在这里使用的是mapbox cartogram默认的一张黑白照片，之后点击屏幕上方的<strong>saved style</strong>之后就可以在你的mapbox studio里面看到你的配色之后的地图了！非常的方便快捷。</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---5.49.31.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/--------.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/---------1.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/---------2.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----.png" class="kg-image" alt loading="lazy"></figure><h3 id="--6">发布地图样式</h3><p>通过上述的步骤，我们已经设计了一款个性化的地图，现在我们需要做的就是将设计好的地图<strong>发布</strong>出去，在mapbox studio中发布地图可以点击右上角的<strong>publish your style</strong>，点击发布之后你就可以通过点击<strong>share，develop，and use your style</strong>来使用这分地图。</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---5.52.49.png" class="kg-image" alt loading="lazy"></figure><p>下图中的右下角有个<strong>Style URL</strong>，我们需要使用这个<a href="https://api.mapbox.com/styles/v1/youngbeom/cjjjpztvads5s2sm93o6x9zeo.html?fresh=true&title=true&access_token=pk.eyJ1IjoieW91bmdiZW9tIiwiYSI6ImNpc2ZxMXpvbTAxb2wzbm52cWI3d21xd3kifQ.-8V1Aipme2wTcp_9R95p7w&ref=localhost#13.0/40.725100/-74.005100/0">链接</a>来在我们的sketch中使用这份地图，我们点击复制！</p><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-13---5.55.01.png" class="kg-image" alt loading="lazy"></figure><h2 id="-mapbox-sketch">从mapbox到sketch</h2><p>我们到这里就已经掌握了基础的mapbox studio的使用方法，接下来我们就要进入sketch当中，我们需要去下载一个<a href="https://github.com/bouchenoiremarc/Sketch-Maps?ref=localhost">Sketch Maps</a>插件。下载完成插件并安装之后，</p><ol><li>打开sketch并新建一个画布</li><li>新建一个矩形</li><li>选中矩形之后，点击<strong>Plugins—Sketch Maps—Fill with Map</strong></li><li>在插件弹出框内输入你要生成地图的地址，比如法国的埃菲尔铁塔</li><li>设置地图的zoom level (地图缩放层级)，bearing (方位角度-最大360度)和pitch (视角，比如有3D模式的地图-最大60度)</li><li>记住在mapbox设计完地图样式之后的 style URL，可以直接复制粘贴到插件弹窗内</li><li>点击确认生成地图</li></ol><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-18---11.55.32.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-18---11.56.52.png" class="kg-image" alt loading="lazy"></figure><figure class="kg-card kg-image-card"><img src="../content/images/2020/03/-----2018-07-18---12.42.08.png" class="kg-image" alt loading="lazy"></figure><p>到这一步你就能看到亲自设计的地图样式已经填充到矩形里面了，这在一些页面的设计中会经常用到地图的填充，如果在这些页面中能用上自己品牌调性的地图也是非常提高产品体验的部分，绝对会是一个加分项，比如点评的境外地图部分就可以用mapbox提供的服务，在国外的应用中像snapchat和lonelyplanet已经开始使用mapbox的服务。其实mapbox收费是阶梯制的，对于个人开发者利用地图服务还是很划算的，这里是详细<a href="https://www.mapbox.com/pricing/?ref=localhost">价格说明</a></p><h2 id="--7">结论</h2><p>mapbox真的是一款非常强大的地图设计工具，如果你有一些数据想做为可视化的展现，或者你想将数据作为服务提供给客户，mapbox绝对可以满足大部分需求，下面有视频可以作为教材去更加深入的了解mapbox这款工具，油管的视频需要准备梯子。</p><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/videoseries?list=PLOlUoOtyTOXh8bwQ6MM7p7l6gfo4j8hch" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><figure class="kg-card kg-embed-card"><iframe width="459" height="344" src="https://www.youtube.com/embed/videoseries?list=PLOlUoOtyTOXh8bwQ6MM7p7l6gfo4j8hch" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></figure><p>如果在尝试的过程遇到一些问题或者好玩的尝试欢迎交流讨论，希望遇到更多志同道合的人一起学习！</p><p>参考链接：</p><p><a href="https://studio.mapbox.com/?ref=localhost">https://studio.mapbox.com/</a></p><p>http://apps.mapbox.com/cartogram</p><p><a href="https://blog.yipl.com.np/map-ui-design-workflow-mapbox-to-sketch-3cb281212783?ref=localhost">https://blog.yipl.com.np/map-ui-design-workflow-mapbox-to-sketch-3cb281212783</a></p>
+		</div>
+		<div class="section-post-authors post-authors flex  post-author-single first">
+	<div class="author-label">
+		<span>Read more posts by this author</span>
+	</div>
+	<div class="author-wrap flex">
+		<a href="../author/youngbeom-2/index.html" class="item-link-overlay"></a>
+		<div class="author-profile-image" style="background-image: url(http://localhost:2368/content/images/2022/06/favicon.png)"></div>
+		<div class="author-content">
+			<h4 class="is-bio no-cover-image"><a href="../author/youngbeom-2/index.html">youngbeom</a></h4>
+			<p>天生闲不下来的折腾青年 设计师 工具控 理想主义者</p>
+		</div>
+	</div>
+</div>		<div class="post-meta">
+			<div class="post-share">
+	<a class="twitter" href="https://twitter.com/intent/tweet?text=%E5%9C%B0%E5%9B%BEUI%E8%AE%BE%E8%AE%A1%E5%B7%A5%E4%BD%9C%E6%B5%81-%E4%BB%8Emapbox%E5%88%B0sketch&amp;url=http://localhost:2368/mapbox-to-sketch/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/mapbox-to-sketch/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+	<a href="javascript:" class="copy" id="copy" data-clipboard-target="#link-value"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.33 13.04h-4.155v4.154h-2.078v-4.155H9.942v-2.077h4.155V6.806h2.078v4.156h4.154v2.077zM8.902 18.58a6.582 6.582 0 0 1 0-13.162c.068 0 .135.007.202.009a8.874 8.874 0 0 0-.001 13.144c-.067 0-.133.009-.2.009zm6.194-15.484a8.876 8.876 0 0 0-3.087.56A8.904 8.904 0 0 0 0 12a8.903 8.903 0 0 0 8.903 8.905 8.893 8.893 0 0 0 3.103-.563 8.854 8.854 0 0 0 3.09.563A8.903 8.903 0 0 0 24 12a8.904 8.904 0 0 0-8.903-8.903z"/></svg></a>
+	<span class="copy-popup">The link has been copied!</span>
+	<input type="text" value="http://localhost:2368/mapbox-to-sketch/" id="link-value">
+</div>		</div>
+	</div>
+</article>
+<aside class="section-prev-next">
+    <div class="prev-next-wrap">
+        <a href="../override-color-in-sketch-icon-sets/index.html" class="prev-post post tag-design tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2020/03/hero.png)"></div>
+            <section class="prev-next-title">
+                <h5>Newer Post</h5>
+                <h3>sketch设计工作流-利用色板遮罩制作图标嵌套组件</h3>
+            </section>
+        </a>
+        <a href="../poi-collision-detection/index.html" class="next-post post tag-design tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2021/03/Poi-Collision-Detection.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Older Post</h5>
+                <h3>实现地图POI非同源数据碰撞检测</h3>
+            </section>
+        </a>
+    </div>
+</aside><div class="section-disqus">
+	</div>
+
+			</div>
+			<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			<a class="is-logo" href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a>
+		</div>
+		<div class="footer-nav">
+			<ul class="nav-list">
+				
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+			</ul>
+		</div>
+		<div class="footer-social-links flex">
+			<a href="https://www.facebook.com/youngbeomshen/" aria-label="link Facebook"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+			<a href="https://twitter.com/ShinYoungboom" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+	</div>
+	<div class="footer-copyright">
+		&copy; 2023 <a href="../index.html">乌托邦是个理想国</a>.
+		All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Nurui</a>.
+	</div>
+</footer>		</div>
+		<div id="notifications" class="global-notification">
+	<div class="subscribe">You’ve successfully subscribed to 乌托邦是个理想国</div>
+	<div class="signin">Welcome back! You’ve successfully signed in.</div>
+	<div class="signup">Great! You’ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Check your email for magic link to sign-in.</div>
+</div>
+				<script src="../assets/js/post.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/global.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/ityped.js%3Fv=6c9bd47ebb"></script>
+		
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>

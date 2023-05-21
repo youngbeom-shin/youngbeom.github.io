@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>应用加载、缓存和刷新状态整理</title>
+
+    <link rel="icon" href="../../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="应用加载、缓存和刷新状态整理">
+    <meta property="og:description" content="设计目的
+为了更加规范页面不同状态的“隐形”交互设计，让页面跳转时信息的接收整理和展示更加的友好。
+
+
+缓存
+
+
+app显示的数据除了从服务器获取之外，还有一个数据来源就是本地数据库(缓存)，他的存在为我们的设计带来了更多的可能性，我们可以将一些数据进行缓存，本地缓存比服务器请求速度更快，更加能保证应用在一些极端的网络状态下的页面完整性。
+为什么需要缓存
+
+ * 场景一：等待
+   在应用向服务器发送请求时我们想给用户看到什么？
+   1.漂亮的加载动画？
+   2.缓存的内容？
+   
+
+
+对于第一种情况，我们会给用户一定的等待时长，同时对服务器发出数据请求，如果是对于相对固定的数据频繁的向服务器发送请求会造成资源的浪费，增加了成本。但如果对时效性要求较高的数据建议增加自动刷新功能，保证给用户看到的是最及时的新数据。
+
+对于第二种有缓存的情况，用户进入页面时可以看到旧的数据，可具有可用性和可操作性，对用户更加友好，增加了用户体验。
+
+场景二：结果
+
+
+
+如果用户处在一个网络状态不是非常有好的环境，无法加载数据时，如果给用户一个空白的页面，感觉对用户不是很友好。
+有一些场景是不需要频繁">
+    <meta property="og:url" content="http://localhost:2368/cache-load-and-refresh/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/02/hero-1.jpg">
+    <meta property="article:published_time" content="2018-12-28T06:52:00.000Z">
+    <meta property="article:modified_time" content="2020-09-21T02:40:00.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="应用加载、缓存和刷新状态整理">
+    <meta name="twitter:description" content="设计目的
+为了更加规范页面不同状态的“隐形”交互设计，让页面跳转时信息的接收整理和展示更加的友好。
+
+
+缓存
+
+
+app显示的数据除了从服务器获取之外，还有一个数据来源就是本地数据库(缓存)，他的存在为我们的设计带来了更多的可能性，我们可以将一些数据进行缓存，本地缓存比服务器请求速度更快，更加能保证应用在一些极端的网络状态下的页面完整性。
+为什么需要缓存
+
+ * 场景一：等待
+   在应用向服务器发送请求时我们想给用户看到什么？
+   1.漂亮的加载动画？
+   2.缓存的内容？
+   
+
+
+对于第一种情况，我们会给用户一定的等待时长，同时对服务器发出数据请求，如果是对于相对固定的数据频繁的向服务器发送请求会造成资源的浪费，增加了成本。但如果对时效性要求较高的数据建议增加自动刷新功能，保证给用户看到的是最及时的新数据。
+
+对于第二种有缓存的情况，用户进入页面时可以看到旧的数据，可具有可用性和可操作性，对用户更加友好，增加了用户体验。
+
+场景二：结果
+
+
+
+如果用户处在一个网络状态不是非常有好的环境，无法加载数据时，如果给用户一个空白的页面，感觉对用户不是很友好。
+有一些场景是不需要频繁">
+    <meta name="twitter:url" content="http://localhost:2368/cache-load-and-refresh/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/02/hero-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="960">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "应用加载、缓存和刷新状态整理",
+    "url": "http://localhost:2368/cache-load-and-refresh/",
+    "datePublished": "2018-12-28T06:52:00.000Z",
+    "dateModified": "2020-09-21T02:40:00.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/02/hero-1.jpg",
+        "width": 1280,
+        "height": 960
+    },
+    "keywords": "设计",
+    "description": "设计目的\n为了更加规范页面不同状态的“隐形”交互设计，让页面跳转时信息的接收整理和展示更加的友好。\n\n\n缓存\n\n\napp显示的数据除了从服务器获取之外，还有一个数据来源就是本地数据库(缓存)，他的存在为我们的设计带来了更多的可能性，我们可以将一些数据进行缓存，本地缓存比服务器请求速度更快，更加能保证应用在一些极端的网络状态下的页面完整性。\n为什么需要缓存\n\n * 场景一：等待\n   在应用向服务器发送请求时我们想给用户看到什么？\n   1.漂亮的加载动画？\n   2.缓存的内容？\n   \n\n\n对于第一种情况，我们会给用户一定的等待时长，同时对服务器发出数据请求，如果是对于相对固定的数据频繁的向服务器发送请求会造成资源的浪费，增加了成本。但如果对时效性要求较高的数据建议增加自动刷新功能，保证给用户看到的是最及时的新数据。\n\n对于第二种有缓存的情况，用户进入页面时可以看到旧的数据，可具有可用性和可操作性，对用户更加友好，增加了用户体验。\n\n场景二：结果\n\n\n\n如果用户处在一个网络状态不是非常有好的环境，无法加载数据时，如果给用户一个空白的页面，感觉对用户不是很友好。\n有一些场景是不需要频繁",
+    "mainEntityOfPage": "http://localhost:2368/cache-load-and-refresh/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #000000;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">应用加载、缓存和刷新状态整理</h1>
+                <section class="post-meta">
+                    youngbeom -
+                    <time class="post-date" datetime="2018-12-28">28 12月 2018</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/02/hero-1.jpg" width="600" height="340" layout="responsive" 
+                alt="应用加载、缓存和刷新状态整理"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p></p><p>设计目的<br />为了更加规范页面不同状态的“隐形”交互设计，让页面跳转时信息的接收整理和展示更加的友好。</p><h2 id="-">缓存</h2><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/1-cache_type.png" class="kg-image" alt width="1480" height="1000" layout="responsive"></amp-img></figure><p><br />app显示的数据除了从服务器获取之外，还有一个数据来源就是本地数据库(缓存)，他的存在为我们的设计带来了更多的可能性，我们可以将一些数据进行缓存，本地缓存比服务器请求速度更快，更加能保证应用在一些极端的网络状态下的页面完整性。<br /><strong>为什么需要缓存</strong></p><ul><li>场景一：等待<br />在应用向服务器发送请求时我们想给用户看到什么？<br />1.漂亮的加载动画？<br />2.缓存的内容？<br /></li></ul><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/2-page_cache_loading.png" class="kg-image" alt width="1200" height="1020" layout="responsive"></amp-img></figure><p><br />对于第一种情况，我们会给用户一定的等待时长，同时对服务器发出数据请求，如果是对于相对固定的数据频繁的向服务器发送请求会造成资源的浪费，增加了成本。但如果对时效性要求较高的数据建议增加自动刷新功能，保证给用户看到的是最及时的新数据。</p><p>对于第二种有缓存的情况，用户进入页面时可以看到旧的数据，可具有可用性和可操作性，对用户更加友好，增加了用户体验。</p><p>场景二：结果<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/3-without_connection_cache.png" class="kg-image" alt width="1216" height="1040" layout="responsive"></amp-img></figure><p><br />如果用户处在一个网络状态不是非常有好的环境，无法加载数据时，如果给用户一个空白的页面，感觉对用户不是很友好。<br />有一些场景是不需要频繁的请求的，比如用户的通讯录，社交软件的好友列表，交易记录列表等，如果这些页面有缓存对用户来说是可以在极端网络环境下友好地使用产品。</p><p>场景三：费用<br />在Wi-Fi下增加缓存是节省流量费的一个方法，虽然这个点对于用户感知比较弱，但是对于有态度的交互同学来说，这也是需要考虑的一方面。</p><p>** 判断是否需要缓存：**</p><ol><li>页面中的内容是否是实时更新的内容</li><li>缓存内容是否对用户的使用造成困扰</li><li>页面数据加载时间的是否过长</li><li>前一个页面是否有预加载的准备</li></ol><h3 id="--1">缓存对页面流程的影响：</h3><p>1-有缓存<br />流程：用户非首次打开页面时，展示缓存页面，首先判断网络状态，若网络状态正常，再判断是否需要自动刷新；若网络状态异常，则展示网络状态异常提示。</p><p>2-无缓存<br />流程：用户进入页面时，展示页面加载状态，加载完成后展示最新页面内容，若网络状态异常，则给用户展示加载失败页面，并且给用户是否要重新加载的权限。</p><p>对缓存的限制：<br />因为手机的容量有限需要对缓存时间以及容量做一个限制，比如认为超过一周的内容对用户当前价值不大，则定期清理超过一周时间的缓存，并且因为手机内存大小的问题需要设置定期杀死进程和限制缓存大小，避免手机因为<a href="https://zh.wikipedia.org/zh-hans/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F?ref=localhost">内存泄露</a>造成的程序运行减慢甚至崩溃的严重后果。</p><h3 id="--2">内存的分配</h3><p>具体内存的分配可以建议参照用户访问页面的情况进行分配，对于用户经常使用的页面和流程分配更多的内存方案，对于不需要缓存的页面可以适当的降低要求。</p><h2 id="--3">加载</h2><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/4-Data_Request.jpg" class="kg-image" alt width="1480" height="1000" layout="responsive"></amp-img></figure><p>加载动画<br />加载动画在页面请求完成前分散用户等待的焦虑，也可以适当增加品牌露出。常见的加载动画使用场景有：启动页加载、页面上拉加载、下拉刷新加载、切换页面加载、页面局部加载。<br />加载动画不建议过度设计，也不要过度使用，对动效大小要合理控制，不要增加设备负担，对性能产生影响。<br /></p><figure class="kg-card kg-image-card"><amp-anim src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/5-meituan_loading.gif" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-anim></figure><p>进度条<br />在一些情形下，相比起加载动画，进度条的使用会让用户对加载的时长有个更好的感知，能减少页面加载过程中的跳出率。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/6-H5_loading.PNG" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-img></figure><p>仿真内容和占位符<br />这是一种过渡的方式，对于用户真正看到内容的时间并没有什么区别，但是在完成加载前先加载框架和占位图的做法会让用户提前进入视觉中心，对于标题可以提前加载或者本地缓存，对于图片可以先展示占位图或者较小分辨率的图片，这就会让加载的过程有一个渐进式的效果。<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/7-ppage_preloading.PNG" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-img></figure><h3 id="--4">总结加载设计的原则：</h3><ol><li>让加载变得更加有趣—忘记等待</li><li>优化加载速度—减少等待时间</li><li>给用户及时推出加载通道—让权</li></ol><ul><li>如果页面加载时间真的过长，再精致的加载动画也抑制不住用户的焦虑</li><li>因为现在网络速度普遍较快，一闪而过的加载动画也会有点不舒服，所以可以看到很多家的加载动画还是将比较复杂的加载换成了简单了基础样式</li></ul><h3 id="--5">图片加载的几种方式</h3><p>说完页面加载，我们看一下图片加载的方式，主要有两种方式。</p><ol><li>渐进式 progressive JPEG<br />1.1 显示方式<br /></li></ol><figure class="kg-card kg-image-card"><amp-anim src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/8-progresssive.gif" class="kg-image" alt width="800" height="533" layout="responsive"></amp-anim></figure><p><br />这一种是比较常见的加载方式，假定用户处于2/3G网络状态下，当用户打开图片后，图片会较为模糊的全尺寸的形式展现，随着不断的加载，图片会越来越清晰，这种做法的代价是需要消耗更多的CPU，但对于现在的终端性能来讲不会是非常大的损耗。</p><p>1.2 如何将图片设定为渐进式<br />我们可以在PS中将图片另存为或存储为web所用格式时勾选<strong>连续</strong>即可：<br />图片另存为：<br /></p><figure class="kg-card kg-image-card"><amp-img src="http://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/9-progressive_export.png" class="kg-image" alt width="888" height="874" layout="responsive"></amp-img></figure><p>或者存储为web所用格式：<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/10-porgressive_export_web.png" class="kg-image" alt width="602" height="446" layout="responsive"></amp-img></figure><p><br />除了以上设计师可以采用的方式以外，工程师也可以用编程语言来进行图片处理，比如C#、python都能对图片进行加工。（知识点啊同学们，学不完的知识点…）</p><p>1.3 交错式PNG<br />交错式PNG加载一般应用在网页图片中，视觉效果类似于渐进式JPEG，当图片较大需要时间时，图片会以间隔几个像素点去加载，所以在看到图像时不会那么的清晰，直到全部加载完成，如果不是特殊需要可以不输出这种形式，因为交错式PNG会让图片更大。<br />PNG的优点是支持透明背景以及消除锯齿边缘的功能，且可以在不失真的情况下压缩图片。相信PNG在未来网页设计中将是普遍使用的标准图片格式。</p><p>1.4 如何将图片设定为交错式PNG<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/11-Interlaced_export.png" class="kg-image" alt width="880" height="570" layout="responsive"></amp-img></figure><p><br />2. 标准型（Baseline JPEG）<br /></p><figure class="kg-card kg-image-card"><amp-anim src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/12-standard.gif" class="kg-image" alt width="800" height="533" layout="responsive"></amp-anim></figure><p><br />标准型图片现在已经不太多见了，很少会看到一张图片会是像打印机一样一点点从上到下加载出来的，这种加载方式需要浏览器一格一格的“刷”出来，缺点是在加载完成后才能确定图片的真实高度，感觉不是很好。</p><p>生成标准型的图片<br />PS默认保存的类型就是标准型：<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/13-standard_export.png" class="kg-image" alt width="888" height="874" layout="responsive"></amp-img></figure><p><br />为了更好的用户体验还是建议大家在导出图片时将图片设置成渐进式，但针对瀑布流的图片加载建议还是采用标准式的加载方式(同Pinterest)。</p><h3 id="--6">页面加载的几种方式</h3><ul><li>异步加载<br /></li></ul><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/14-Asynchronous_loading.PNG" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-img></figure><p><br />优先加载占用网络资源较小的元素，比如优先加载文字，之后再加载图片，图片加载之前可以先加载占位图，这种做法的好处就是可以完成渐进式的加载，降低用户的焦虑感。</p><p>建议使用的页面类型：详情页等布局相对固定，加载前后对页面布局不会产生较大跳动的页面。</p><ul><li>懒加载(延迟加载)<br /></li></ul><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/15-lazzy_loading.jpg" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-img></figure><p><br />懒加载这个名词不是经常听，但是是我们最经常使用的一种加载形式之一。图片流都是这种加载方式，比如我们在淘宝浏览到一定位置时再继续请求下一批次的商品，这种方式的就是只加载一定个数的数据，当图片滚动到视窗内的时候，才会再去加载。</p><p>建议使用的页面类型：需要加载资源较大的列表页等。形式参考Pinterest。</p><p>预加载<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/16-Splash%20screen.PNG" class="kg-image" alt width="750" height="1334" layout="responsive"></amp-img></figure><p><br />预加载的方式就是提前加载，当用户在流程相对集中且必要时加载下一个页面的数据，这样当用户完成上一页面的操作进入下一页面时就能看到加载完成的页面，但是这种方式具有一定的局限性，对于非连续性的页面跳转或者在用户尚未最终确认本页面操作前无法判断下一页面的情况时就不能采用预加载的方式。预加载的方式可以有效的提升产品的使用流畅度。<br />建议使用的页面类型：闪屏幻灯，列表页等。</p><p>智能加载<br />除了以上的加载方式以外我们还要考虑用户但前所处的网络类型，比如使用移动流量，WI-FI环境以及无网弱网环境下的页面展示情况。</p><p>移动流量：虽然现在越来越的用户流量套餐会比较多，但是为了避免传统用户在使用流量过程中造成不必要的资源浪费还是会在程序内部加上判断去做限制。比如视频应用会在流量下提示用户当前资源可能消耗**  Mb流量，是否继续播放。对于应用内下载的行为可以在切换到流量模式时自动停止，播放中的视频或者音频也可以停止。</p><p>Wi-Fi条件下：优先下载优质的图片，播放更高比特率的音频以及清晰度的视频。</p><p>在网络状态较差时：默认加载低质量的图片甚至停止播放音频视频。</p><ol><li>缓存加载<br />针对无网络的情况下，让用户仍然能查看之前已经缓存在本地的信息，使页面不至于空白，这不仅能够有效减少用户流量成本，同时增加了访问速度。</li></ol><h3 id="--7">建议缓存页面</h3><p>体验了一下在无网状态下进入人人贷App，我看到的页面是这样的：<br />人人贷主要界面：<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/17-renrendai.png" class="kg-image" alt width="4500" height="1334" layout="responsive"></amp-img></figure><p>汽车之家主要页面：<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/18-autohome.jpg" class="kg-image" alt width="3741" height="1334" layout="responsive"></amp-img></figure><p>微信主要界面：<br /></p><figure class="kg-card kg-image-card"><amp-img src="https://youngbeom-cloud.oss-cn-shanghai.aliyuncs.com/blog/assets/2018/12/19-wechat.png" class="kg-image" alt width="3000" height="1334" layout="responsive"></amp-img></figure><h3 id="--8">思考哪些信息是用户比较关心的？</h3><ul><li>我的资产是多少？</li><li>上一次进来项目页看到产品标的的利率是多少？</li><li>我昨天发起的提现是几点完成的？</li><li>…<br />对于这些不用做新的请求就能知道的信息希望可以在无网甚至弱网下可以访问查看，但是需要我们在页面中告诉用户当前网络状态。</li></ul><h3 id="--9">无网状态下的按钮可点击及反馈情况</h3><p>基于可用性原则，我们在页面仅无网状态下不应让用户无法进行点击和跳转，没有网络只是无法跟服务器进行新的请求，对于整个产品的跳转流程应该是不影响的，这也是用户的心理模型，对于提示仅在需要流量的环节对用户提示检查网络/稍后重试即可。<br />可以体验的高频使用产品有微信和网易云音乐，建议体验竞品的做法和逻辑。</p><h3 id="--10">思考：先加载还是先展示？</h3><p>先加载 后展示<br />优点：保证数据的准确性和真实性<br />缺点：网络不好时造成等待</p><p>先展示 后加载<br />优点：可以给用户零等待的错觉<br />缺点：对于数据的重新加载会对页面造成“跳动”的感觉</p><p>差异化加载<br />对于框架和布局采用先展示后加载的方式，对于数据等较为动态的数据采用先加载后展示的方式。<br />因为短时间内不更新的情况下产品的框架不会发生较大的变化，这样发生错误的几率会比较低，但是内容和数据是容易变动的，为了保证每个用户看到的都是真实准确的数据还是要先加载后展示。</p><h2 id="--11">刷新</h2><p>下拉刷新(Pull to refresh)  是2012年Twitter发明的，之后大量的应用在各家应用上，之后淘宝在这个交互的基础上还设计了“淘宝二楼”这种新型的功能。<br />刷新也是产品设计中需要考虑的一个方面，一般刷新机制大致分为以下三种<br />1. 手势刷新<br />下拉刷新是最常见的手势刷新<br />2. 点击刷新<br />在一段时间之前还会在产品中看到刷新按钮，其实这是一种较为过时的设计方式，通常的做法是手势刷新，或者配合点击屏幕空白刷新。<br />3. 自动刷新<br />自动刷新也是常见的刷新方式，类似资讯类产品等按照时间流排序的应用会采用自动刷新的方式，当用户退出应用或者退到后台后重新进入应用会自动刷新列表，让用户看到最新的消息。</p><h3 id="--12">关于刷新的思考</h3><p>刷新是我们看起来是比较小的一个点，但是研究起来还是非常有趣，需要考虑的情景也很多。</p><ol><li>刷新的触发条件</li><li>刷新成功，刷新出新的内容，提示给用户的文案是什么？</li><li>刷新成功，没有新内容，提示什么？</li><li>刷新失败，但是有缓存，提示文案是什么？</li><li>刷新失败，无缓存的时候，提示文案是什么？</li><li>连续刷新的保护机制：如果没有对页面进行压力测试，在一段时间内前端请求接口太过频繁可能会导致服务器宕机。</li><li>刷新规则：列表内的数据刷新一次请求多少条的数据？</li></ol><h2 id="--13">参考</h2><p>产品必看：三大要点助你缓解APP用户等待焦虑——三哥<br />关于加载设计，你要知道的8种策略和4种样式—— 刘东晨<br />交互设计的三大隐形机制:加载、刷新和缓存-马海祥博客<br />浅谈APP设计中的缓存、加载与刷新—— 耿瑞超<br />彻底弄懂HTTP缓存机制及原理——土木有水微博</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        <h3>乌托邦是个理想国</h3>
+            <p>柏拉图说:乌托邦是个理想国</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

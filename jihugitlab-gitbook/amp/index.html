@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>使用 极狐GitLab + Gitbook 发布 Handbook文档</title>
+
+    <link rel="icon" href="../../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用 极狐GitLab + Gitbook 发布 Handbook文档">
+    <meta property="og:description" content="前言
+
+GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。
+
+在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。
+
+我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：
+
+ * 支持Markdown
+ * 支持团队协作
+ * 文档有版本历史
+ * 支持导出HTML和PDF格式
+ * 支持树形目录">
+    <meta property="og:url" content="http://localhost:2368/jihugitlab-gitbook/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg">
+    <meta property="article:published_time" content="2022-03-28T01:58:00.000Z">
+    <meta property="article:modified_time" content="2022-03-31T12:58:56.000Z">
+    <meta property="article:tag" content="设计">
+    <meta property="article:tag" content="技术">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用 极狐GitLab + Gitbook 发布 Handbook文档">
+    <meta name="twitter:description" content="前言
+
+GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。
+
+在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。
+
+我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：
+
+ * 支持Markdown
+ * 支持团队协作
+ * 文档有版本历史
+ * 支持导出HTML和PDF格式
+ * 支持树形目录">
+    <meta name="twitter:url" content="http://localhost:2368/jihugitlab-gitbook/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计, 技术">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="2160">
+    <meta property="og:image:height" content="1440">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "使用 极狐GitLab + Gitbook 发布 Handbook文档",
+    "url": "http://localhost:2368/jihugitlab-gitbook/",
+    "datePublished": "2022-03-28T01:58:00.000Z",
+    "dateModified": "2022-03-31T12:58:56.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg",
+        "width": 2160,
+        "height": 1440
+    },
+    "keywords": "设计, 技术",
+    "description": "前言\n\nGitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。\n\n在学习和了解的过程中我发现了 GitLab 的 UX Handbook，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。\n\n我们通过查看这份 UX Handbook 的源码 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 UX Handbook 首页看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了Gitbook，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：\n\n * 支持Markdown\n * 支持团队协作\n * 文档有版本历史\n * 支持导出HTML和PDF格式\n * 支持树形目录\n ",
+    "mainEntityOfPage": "http://localhost:2368/jihugitlab-gitbook/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #000000;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">使用 极狐GitLab + Gitbook 发布 Handbook文档</h1>
+                <section class="post-meta">
+                    youngbeom -
+                    <time class="post-date" datetime="2022-03-28">28 3月 2022</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2022/03/Jihu_GitLab-gitbook-1.jpg" width="600" height="340" layout="responsive" 
+                alt="使用 极狐GitLab + Gitbook 发布 Handbook文档"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h2 id="-">前言</h2><p>GitLab 是一家全员远程办公的企业，公司超 1400 人分布在全球的各个国家和地区，大家都是远程异步优先的模式来工作，在这样的情况下为了避免大家工作协同上的不便，各个职能部门的员工都会借助 Handbook 来了解公司。</p><p>在学习和了解的过程中我发现了 <a href="https://about.gitlab.com/handbook/engineering/ux/?ref=localhost">GitLab 的 UX Handbook</a>，这是他们的用户体验部门编写的一份工作指南，内容包含产品设计师、用户研究员等职能的设计师在日常工作中所需要了解的年度工作计划、工作流程、入职指导、职业规划、用研培训等内容。</p><figure class="kg-card kg-image-card"></figure><p>我们通过查看这份 <a href="https://gitlab.com/gitlab-com/www-gitlab-com/-/tree/master/sites/handbook/source/handbook/engineering/ux?ref=localhost">UX Handbook 的源码</a> 可以看到其实内容非常的丰富，大致看了一下有近 100 篇文章，但受限于网站展示方式，我们并不能在 <a href="https://about.gitlab.com/handbook/engineering/ux/?ref=localhost">UX Handbook 首页</a>看到这些手册的全部内容，所以我在想是否有一种方法可以将这些手册以一个清晰直观的方式全部展示出来。之后在调研的过程中就发现了<a href="https://www.gitbook.com/?ref=localhost">Gitbook</a>，用 Gitbook + 极狐GitLab 的结合几乎满足了我所有的要求：</p><ul><li>支持Markdown</li><li>支持团队协作</li><li>文档有版本历史</li><li>支持导出HTML和PDF格式</li><li>支持树形目录</li><li>有非常丰富的插件可以拓展</li></ul><p>从去年下半年开始，为了能让自己更好的学习和了解这份文档中的内容，我开始利用业余时间将全部的英文内容翻译整理成中文文档，这样做一方面是让自己更好的理解文档中分享的设计相关的方法，另一方面也可以分享给更多国内感兴趣的朋友，更加方便阅读和理解。目前 GitLab 的 UX handbook 已经通过 GitLab 自带的 Pages 发布，项目地址是：<a href="https://gitlab.com/youngbeomshin/ux?ref=localhost">中文版 UX 手册</a>，大家可以通过 <a href="https://youngbeomshin.gitlab.io/ux/?ref=localhost">这个域名</a> 进行访问。目前还有一小部分内容没有完成翻译，完成的部分也有很多不专业的地方，也欢迎大家一起参与。下图是在本地生成的 Gitbook 预览页面。</p><figure class="kg-card kg-image-card"></figure><p>下面的内容我将分享我是如何通过使用 极狐GitLab + Gitbook 来完成这份 Handbook ，也会分享一些比较基础好用的 Gitbook 插件。</p><h2 id="-gitlab-gitbook-">在 极狐GitLab 创建 Gitbook 项目</h2><ul><li>首先注册 极狐GitLab 账号，登录成功后点击顶部导航栏中的 <strong>新建项目/仓库</strong></li></ul><figure class="kg-card kg-image-card"></figure><ul><li>选择<strong>从模板创建</strong></li></ul><figure class="kg-card kg-image-card"></figure><ul><li>选择 <strong>Pages/Gitbook </strong>模板，极狐GitLab 在创建时提供了非常多的模板供大家选择。</li></ul><figure class="kg-card kg-image-card"></figure><ul><li>输入项目名称和项目标识串，点击<strong>新建项目</strong>就完成创建了。<br /><em>注：如果你想让其他人访问该项目生成的 pages 页面，那么在创建时需要将可见性级别设置为 <strong>公开</strong></em></li></ul><figure class="kg-card kg-image-card"></figure><ul><li>创建成功后我们就获得了一个 Gitbook 项目，里面除了 readme 和 summary 文件外还包含了一个 GitLab 流水线触发脚本，它执行的作业包括 test、deploy、以及 pulic，都可以在用户将代码更改提交到 master 分支后自动触发流水线执行。</li></ul><figure class="kg-card kg-image-card"></figure><h2 id="--1">克隆项目</h2><p>首先将生成的 Gitbook 克隆到本地，你可以选择 SSH / HTTPS 两种方式</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>输入命令 git clone + SSH/HTTPS 链接，我是通过 https 的方式将代码克隆到了我的本地测试仓库文件夹中。</figcaption></figure><h2 id="gitbook-">Gitbook 安装</h2><p>我使用的系统环境是 MacOS 12.3、Node.js 版本是 v10.22.0，安装的过程非常的简单，在命令行中输入<br /><code>npm install gitbook-cli -g</code></p><p>安装成功，我们就可以使用 Gitbook 的命令来进行各种操作了<br />进入我们克隆的项目目录<br /><code>cd gitbook-cool</code>  (gitbook-cool替换成你的项目标识符)</p><h3 id="-book">预览 book</h3><p>我们可以先预览一下发布之后的页面，在终端输入<br /><code>gitbook build</code></p><figure class="kg-card kg-image-card"></figure><p><code>gitbook serve</code></p><figure class="kg-card kg-image-card"></figure><p>我们就可以通过在浏览器输入： <a href="http://localhost:4000/?ref=localhost">http://localhost:4000</a> 来预览目前的样式了。</p><figure class="kg-card kg-image-card"></figure><h3 id="--2">目录</h3><pre><code># Summary
+
+* [前言](README.md)
+* [第一章](xx.md)
+* [第二章](xx.md)
+* [第三章](xx.md)
+</code></pre><p><code>xx.md</code>就是我们每个章节独立的 markdown 文件，所以用 Gitbook 写一本书真的非常方便，一个目录加上一些章节的 markdown 文件，你的书就完成了，接下来就可以完善内容了。</p><h2 id="--3">插件</h2><p>Gitbook 作为一款开源的软件，也有一些非常方便的插件可以使用，有了插件之后可以让文档的阅读和使用更加的高效，下面我列举了一些我在使用的插件。</p><pre><code>{
+     “plugins”: [
+     	  ”search-plus”,
+          “youtubex”,
+          “pageTop”,
+          “sharing”,
+          “editlink”,
+          “rss”,
+          “tbfed-pagefooter”,
+          “expandable-chapters-small”,
+          “anchor-navigation-ex”,
+          “tbfed-pagefooter”,
+          ”copy-code-button”,
+          ”splitter”,
+          ”highlight”
+     ]
+}
+</code></pre><p>插件的安装以及使用方式：</p><ol><li>在 book.json 的 plugins 参数中添加插件名。</li><li>终端使用 gitbook install - 插件名 来安装插件，或使用 NPM 命令来单独安装：npm install gitbook-plugin-插件名。</li><li>重启服务或者重新打包就能看见效果。</li><li>如果使用 gitbook install 安装的很慢，建议使用 npm init 初始化一个package.json 文件，然后每个包通过 npm 命令安装，以后就可以通过 npm install 一键快速安装依赖包了。</li></ol><h3 id="search-plus-"><a href="https://github.com/lwdgit/gitbook-plugin-search-plus?ref=localhost">search-plus</a> 高级搜索</h3><p>Search-plus支持中文搜索，在使用这个插件之前需要将默认的 search 和 lunr 插件删掉。</p><figure class="kg-card kg-image-card"></figure><h3 id="editlink-"><a href="https://github.com/rtCamp/gitbook-plugin-edit-link?ref=localhost">editlink</a>  在线编辑文件</h3><pre><code>"editlink": {
+            "base": "https://jihulab.com/jihulab/product/design/design-handbook/-/tree/master",
+            "label": "编辑此页",
+            "multilingual": false
+</code></pre><p>通过这款插件可以在页面中发现需要更改的段落时，快速定位到代码仓库中的位置。</p><figure class="kg-card kg-image-card"></figure><h3 id="tbfed-pagefooter"><a href="https://github.com/FastGitORG/gitbook-plugin-tbfed-pagefooter?ref=localhost">tbfed-pagefooter</a></h3><p>自定义页脚，可以在页脚添加 copyright 信息以及最后修改时间。</p><figure class="kg-card kg-image-card"></figure><h3 id="youtubex"><a href="https://github.com/manchiyiu/gitbook-plugin-youtubex?ref=localhost">youtubex</a></h3><p>支持插入 YouTube 视频 ，例如 <a href="https://www.youtube.com/watch?v=dod5EUYYgDk&amp;ref=localhost">How to structure data in Dovetail using import</a> 这个视频，可以像下面这么插入到 Gitbook 中，好处是视频的视窗大小会自动适应浏览器页面的大小，并且可以在文章中直接点击观看视频。</p><pre><code>{%YouTube%}dod5EUYYgDk{%endyoutube%}
+</code></pre><figure class="kg-card kg-image-card"></figure><h3 id="splitter"><a href="https://github.com/yoshidax/gitbook-plugin-splitter?ref=localhost">splitter</a></h3><p>使用这款插件可以自由调节侧边栏的宽度，如果文档中有的标题长度过长可以使用这款插件。</p><figure class="kg-card kg-image-card"></figure><h3 id="anchor-navigation-ex"><a href="https://github.com/zq99299/gitbook-plugin-anchor-navigation-ex?ref=localhost">anchor-navigation-ex</a></h3><p>使用该插件可以在文章的右上角显示一个目录图标，鼠标移动至图标上方可以显示文章内的目录结构，方便快速的进行预览及跳转。还可以在页面左上角切换深色模式等主题以及文字类型。</p><figure class="kg-card kg-image-card"></figure><h2 id="-gitlab-pages-">使用 gitlab pages 发布</h2><p>当我们完成了所有的内容修改之后，就需要一个地方能够发布我们的内容，这时候 Gitlab pages 就为我们提供了非常大的便利，我们不需要单独启用一台服务器，注册并绑定一个域名，而是通过 Gitlab 自带的 pages 功能轻松发布一个可供所有人访问的站点。</p><p>目前因为极狐Gitlab 暂未开放 pages 功能，所以我通过将 极狐GitLab 仓库中的代码 mirror 到 Gitlab 的方式，在 Gitlab 生成一个 pages。</p><p>我们可以在 极狐Gitlab 的代码仓库中点击左侧面板 <strong>设置-仓库-镜像仓库</strong> 来设置镜像到 Gitlab 中。</p><figure class="kg-card kg-image-card"></figure><p>完成镜像操作后，我们返回 Gitlab 的 gitbook 仓库，点击左侧面板中 <strong>设置-pages</strong> 来查看项目的公网链接。</p><figure class="kg-card kg-image-card"></figure><p>到这一步为止，我们的项目就已经是发布并且可以访问的状态了。</p><figure class="kg-card kg-image-card"></figure>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        <h3>乌托邦是个理想国</h3>
+            <p>柏拉图说:乌托邦是个理想国</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

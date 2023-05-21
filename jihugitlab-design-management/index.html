@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="auto-dark-mode">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>快速上手极狐GitLab设计管理功能</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="../assets/css/screen.css%3Fv=6c9bd47ebb.css">
+		<link rel="icon" href="../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="快速上手极狐GitLab设计管理功能">
+    <meta property="og:description" content="什么是设计管理功能
+
+设计管理是 极狐GitLab 议题功能内的一个模块，在这里设计师可以上传议题相关的设计资产，包括线框图、原型图等。
+
+与议题相关的研发、产品等职能的同事可以在议题内对设计进行浏览及协作，可以通过这种方式将设计也提供了单一可信源(SSOT)上的协作设计方法。
+
+您可以与您的团队共享设计原型，或者可以轻松的查看和解决设计评审。
+
+
+如何使用设计管理
+
+首先要求启用 Large File Storage（LFS）：
+
+ * 对于自助管理实例，管理员必须全局启用LFS。
+ * 对于使用极狐GitLab SaaS的用户是默认开启的。
+ * 必须为项目本身启用 LFS。如果全局启用，默认情况下所有项目都启用 LFS。 要在项目级别启用 LFS，请导航到项目的 设置 &gt; 通用，展开 可见性，项目功能，权限 并启用 Git 大文件存储 (LFS)。
+
+目前设计管理支持上传的文件类型有png、jpg、jpeg、GIF、bmp、tiff、ico、webp">
+    <meta property="og:url" content="http://localhost:2368/jihugitlab-design-management/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2022/03/design-management-1.jpg">
+    <meta property="article:published_time" content="2022-03-15T02:52:24.000Z">
+    <meta property="article:modified_time" content="2022-03-15T06:32:58.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="快速上手极狐GitLab设计管理功能">
+    <meta name="twitter:description" content="什么是设计管理功能
+
+设计管理是 极狐GitLab 议题功能内的一个模块，在这里设计师可以上传议题相关的设计资产，包括线框图、原型图等。
+
+与议题相关的研发、产品等职能的同事可以在议题内对设计进行浏览及协作，可以通过这种方式将设计也提供了单一可信源(SSOT)上的协作设计方法。
+
+您可以与您的团队共享设计原型，或者可以轻松的查看和解决设计评审。
+
+
+如何使用设计管理
+
+首先要求启用 Large File Storage（LFS）：
+
+ * 对于自助管理实例，管理员必须全局启用LFS。
+ * 对于使用极狐GitLab SaaS的用户是默认开启的。
+ * 必须为项目本身启用 LFS。如果全局启用，默认情况下所有项目都启用 LFS。 要在项目级别启用 LFS，请导航到项目的 设置 &gt; 通用，展开 可见性，项目功能，权限 并启用 Git 大文件存储 (LFS)。
+
+目前设计管理支持上传的文件类型有png、jpg、jpeg、GIF、bmp、tiff、ico、webp">
+    <meta name="twitter:url" content="http://localhost:2368/jihugitlab-design-management/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2022/03/design-management-1.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="2160">
+    <meta property="og:image:height" content="1440">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "快速上手极狐GitLab设计管理功能",
+    "url": "http://localhost:2368/jihugitlab-design-management/",
+    "datePublished": "2022-03-15T02:52:24.000Z",
+    "dateModified": "2022-03-15T06:32:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2022/03/design-management-1.jpg",
+        "width": 2160,
+        "height": 1440
+    },
+    "keywords": "设计",
+    "description": "什么是设计管理功能\n\n设计管理是 极狐GitLab 议题功能内的一个模块，在这里设计师可以上传议题相关的设计资产，包括线框图、原型图等。\n\n与议题相关的研发、产品等职能的同事可以在议题内对设计进行浏览及协作，可以通过这种方式将设计也提供了单一可信源(SSOT)上的协作设计方法。\n\n您可以与您的团队共享设计原型，或者可以轻松的查看和解决设计评审。\n\n\n如何使用设计管理\n\n首先要求启用 Large File Storage（LFS）：\n\n * 对于自助管理实例，管理员必须全局启用LFS。\n * 对于使用极狐GitLab SaaS的用户是默认开启的。\n * 必须为项目本身启用 LFS。如果全局启用，默认情况下所有项目都启用 LFS。 要在项目级别启用 LFS，请导航到项目的 设置 &gt; 通用，展开 可见性，项目功能，权限 并启用 Git 大文件存储 (LFS)。\n\n目前设计管理支持上传的文件类型有png、jpg、jpeg、GIF、bmp、tiff、ico、webp 或 svg 格式的文件。\n\n用户可以先打开 jihulab.com 创建一个项目，之后进入左侧面板中的议题列表页面新建一个议题，创",
+    "mainEntityOfPage": "http://localhost:2368/jihugitlab-design-management/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="4936191ae23ea50aef0723c6b5" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=6c9bd47ebb"></script><style>:root {--ghost-accent-color: #000000;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=6c9bd47ebb.css">
+	</head>
+	<body class="post-template tag-design tag-hash-import-2023-05-19-07-30 global-post-authors-disable">
+		<div class="global-wrap">
+			<div class="section-content-wrap">
+				<div class="section-header wrap">
+	<header class="header-wrap flex">
+		<div class="header-logo">
+			<div class="is-logo"><a href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a></div>
+
+		</div>
+		<div class="header-nav">
+			<nav class="nav-wrap">
+				<label for="toggle" class="nav-label hamburger hamburger-minus">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</label>
+				<input type="checkbox" id="toggle" class="nav-toggle">
+				<ul class="nav-list">
+					
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+					<li class="section-members-login-panel">
+	<a class="members-signin" href="http://localhost:2368/signin/">Sign in</a>
+	<a class="members-signup" href="http://localhost:2368/signup/">Sign up</a>
+</li>									</ul>
+			</nav>
+		</div>
+		<div class="blog-description flex">柏拉图说:乌托邦是个理想国</div>
+	</header>
+</div>				<article>
+	<div class="section-featured is-featured-image">
+	<div class="featured-image" style="background-image: url(../content/images/2022/03/design-management-1.jpg)"></div>
+	<div class="featured-wrap flex">
+			<div class="featured-content">
+				<div class="tags-wrap">
+					<a class="post-tag global-tag" href="../tag/design/index.html">设计</a>
+				</div>
+				<h1 class="white">快速上手极狐GitLab设计管理功能</h1>
+				<div class="item-meta white">
+					<span>by</span>
+					<a href="../author/youngbeom-2/index.html">youngbeom</a>
+					<time datetime="2022-03-15">1 年前</time>
+					<span class="reading-time"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M10.1907692,24 C4.5625628,24 0,19.4374372 0,13.8092308 C0,8.18102433 4.5625628,3.61846154 10.1907692,3.61846154 C15.8189757,3.61846154 20.3815385,8.18102433 20.3815385,13.8092308 C20.3815385,19.4374372 15.8189757,24 10.1907692,24 Z M10.1907692,22 C14.7144062,22 18.3815385,18.3328677 18.3815385,13.8092308 C18.3815385,9.28559383 14.7144062,5.61846154 10.1907692,5.61846154 C5.6671323,5.61846154 2,9.28559383 2,13.8092308 C2,18.3328677 5.6671323,22 10.1907692,22 Z" id="Oval"></path><path d="M7.53230769,2.32923077 C6.98002294,2.32923077 6.53230769,1.88151552 6.53230769,1.32923077 C6.53230769,0.776946019 6.98002294,0.329230769 7.53230769,0.329230769 L12.9225711,0.329230769 C13.4748559,0.329230769 13.9225711,0.776946019 13.9225711,1.32923077 C13.9225711,1.88151552 13.4748559,2.32923077 12.9225711,2.32923077 L7.53230769,2.32923077 Z" id="Line-2"></path><path d="M13.2928932,9.29289322 C13.6834175,8.90236893 14.3165825,8.90236893 14.7071068,9.29289322 C15.0976311,9.68341751 15.0976311,10.3165825 14.7071068,10.7071068 L10.897876,14.5163376 C10.5073517,14.9068618 9.87418674,14.9068618 9.48366245,14.5163376 C9.09313816,14.1258133 9.09313816,13.4926483 9.48366245,13.102124 L13.2928932,9.29289322 Z" id="Line"></path></svg> 7 min read</span>
+				</div>
+		</div>
+	</div>
+</div>	<div class="section-post wrap">
+		<div class="post-wrap ">
+			<h2 id="-">什么是设计管理功能</h2><p><a href="https://docs.gitlab.cn/ee/user/project/issues/design_management.html?ref=localhost">设计管理</a>是 极狐GitLab 议题功能内的一个模块，在这里设计师可以上传议题相关的设计资产，包括线框图、原型图等。</p><p>与议题相关的研发、产品等职能的同事可以在议题内对设计进行浏览及协作，可以通过这种方式将设计也提供了<a href="https://zhuanlan.zhihu.com/p/183726137?ref=localhost">单一可信源(SSOT)</a>上的协作设计方法。</p><p>您可以与您的团队共享设计原型，或者可以轻松的查看和解决设计评审。</p><h2 id="--1">如何使用设计管理</h2><p>首先要求启用 Large File Storage（LFS）：</p><ul><li>对于自助管理实例，管理员必须全局启用LFS。</li><li>对于使用极狐GitLab SaaS的用户是默认开启的。</li><li>必须为项目本身启用 LFS。如果全局启用，默认情况下所有项目都启用 LFS。 要在项目级别启用 LFS，请导航到项目的 <strong>设置 &gt; 通用</strong>，展开 <strong>可见性，项目功能，权限</strong> 并启用 <strong>Git 大文件存储 (LFS)</strong>。</li></ul><p>目前设计管理支持上传的文件类型有png、jpg、jpeg、GIF、bmp、tiff、ico、webp 或 svg 格式的文件。</p><p>用户可以先打开 <a href="http://localhost:2368/jihugitlab-design-management/jihulab.com">jihulab.com</a> 创建一个项目，之后进入左侧面板中的议题列表页面新建一个议题，创建完成后点击议题界面中的<strong>点击上传</strong>，或将图片拖拽至虚线框内完成上传。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-1.png" class="kg-image" alt loading="lazy"></figure><p>上传完成的设计文件会在议题页面显示，我们在上传同名文件时会生成一个新的版本，但如果是同名文件但内容没有更改过时则会跳过且不会更新版本。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-2.png" class="kg-image" alt loading="lazy"></figure><p>所有拥有议题访问权限的用户都可以看到上传的文件，用户可以点击图像进行放大，上传多张设计图时也可以使用键盘的左/右键来切换。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-3-1.png" class="kg-image" alt loading="lazy"></figure><p>如果用户希望对图片进行评审，可以通过鼠标点击图片中需要评论的部分来进行留言，这与我们在Figma或是同类产品的操作逻辑类似。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-4-1.png" class="kg-image" alt loading="lazy"></figure><p>在设计评审时我们可以@项目中的相关人员，与他们进行交流和反馈，如果一些交流和反馈得到了解决，也可以将这些评审标记为已解决。</p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-5.png" class="kg-image" alt loading="lazy"></figure><p>通过点击右上角的【添加待办事项】也可以将设计评审添加到自己的todo list，避免因为议题过多而遗漏。</p><p>我们在设计管理中所生成的用户活动事件都会由极狐GitLab跟踪并显示在用户配置文件、群组和项目活动页面。</p><h2 id="gitlab-figma-">GitLab Figma插件</h2><p>因为我们大多数的设计都会在其他的工具上完成，如Figma等，所以如果想要将我们设计好的文件上传至极狐GitLab那么会经历以下步骤：</p><ol><li>在figma完成设计</li><li>从Figma导出设计</li><li>在极狐GitLab找到对应的议题</li><li>将设计上传至议题中的设计管理中</li></ol><p>GitLab的Figma插件就是通过API token的方式将Figma中的设计稿无需下载直接同步至极狐GitLab的议题中。</p><p>下面我们来看一下如何去使用这样一款插件，去更好的自动化我们的一些工作。</p><h3 id="--2">安装插件</h3><p>通过<a href="https://www.figma.com/community/plugin/860845891704482356/GitLab?ref=localhost">这个链接</a>跳转到GItLab Figma插件页面，可以点击右上角的install按钮进行安装。</p><h3 id="-gitlab-access-token">创建极狐GitLab个人access token</h3><ul><li>导航至 <a href="https://jihulab.com/-/profile/personal_access_tokens?ref=localhost">https://jihulab.com/-/profile/personal_access_tokens</a></li><li>为你的个人访问令牌取一个名字</li><li>在选择范围一项中选择api</li><li>点击【创建个人访问令牌】</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-6-1.png" class="kg-image" alt loading="lazy"></figure><ul><li>点击创建完成后会生成一个个人访问令牌，记得复制并保存好。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-7.png" class="kg-image" alt loading="lazy"></figure><h3 id="-figma-">从Figma上传一个设计</h3><p>GitLab Figma插件可以让您将Figma中的设计上传到极狐GitLab的议题中</p><ul><li>从Figma的菜单栏中打开插件：插件→GitLab→将设计上传到GitLab</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-8.png" class="kg-image" alt loading="lazy"></figure><ul><li>输入您的极狐GitLab个人访问令牌，您只需要执行一次操作，或者在您设置的访问令牌到期以及删除令牌后重新执行一次。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-9.png" class="kg-image" alt loading="lazy"></figure><ul><li>勾选 I am using a self-management GitLab instance。 输入jihulab.com。如果您是使用其他自部署版本且有公网域名，则填入相对应的链接地址。之后点击保存设置。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-10.png" class="kg-image" alt loading="lazy"></figure><ul><li>将您希望上传设计稿的议题链接粘贴至插件的输入框中，或者选择插件中显示的最近议题。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-11.png" class="kg-image" alt loading="lazy"></figure><ul><li>选择设计内容（最多10个），点击插件中的upload按钮，提示上传成功。</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-12-1.png" class="kg-image" alt loading="lazy"></figure><h3 id="--3">重置插件</h3><p>如果您希望删除 极狐GitLab 个人访问令牌并将插件重置为默认状态，请导航到“重置为默认”菜单项：<br><em>插件</em>→ <em>GitLab</em> →<em>重置为默认值</em></p><figure class="kg-card kg-image-card"><img src="../content/images/2022/03/design-management-13-2.png" class="kg-image" alt loading="lazy"></figure><h2 id="--4">最后</h2><p>设计管理可以让我们在整个产品开发流程中将设计和研发流程结合的更加紧密，能够让设计师的产出也可以通过议题进行记录和归档，让议题不仅关联代码修改的MR、产品经理的PRD，也可以关联项目中的设计部分，这为日后所有其他同事了解项目背景提供了更直观的展现，所有负责人都在这个议题中，任何人如果想看设计变更，代码变更，需求变更都是可追溯的，可以看到这个项目的所有进行过程。</p><p>这种协作方式就像DevOps让研发和运维能够紧密协作一样。能够让不同职能之间消除一个又一个的孤岛和墙，加速沟通和研发效率。</p><p>但产品也是在一个不断迭代和优化的过程中，在使用中还是有一些值得优化的空间：</p><ul><li>比如设计管理目前还不支持PDF等格式的文件上传</li><li>比如Figma的插件上传设计至设计管理中后，还不支持通过上传的文件追溯到Figma的源文件</li><li>比如上传不同版本的同名文件后也没有一个前后版本变更对照的功能。</li></ul><p>所有的这些优化可以通过不断的迭代进行优化，因为这些产品都是开源，大家可以通过访问项目地址进行议题贡献或者代码贡献。</p><h2 id="--5">相关链接</h2><p><a href="https://docs.gitlab.cn/ee/user/project/issues/design_management.html?ref=localhost">https://docs.gitlab.cn/ee/user/project/issues/design_management.html</a></p><p><a href="https://gitlab.com/gitlab-org/gitlab-figma-plugin?ref=localhost">https://gitlab.com/gitlab-org/gitlab-figma-plugin</a></p><p><a href="https://www.figma.com/community/plugin/860845891704482356/GitLab?ref=localhost">https://www.figma.com/community/plugin/860845891704482356/GitLab</a></p>
+		</div>
+		<div class="section-post-authors post-authors flex  post-author-single first">
+	<div class="author-label">
+		<span>Read more posts by this author</span>
+	</div>
+	<div class="author-wrap flex">
+		<a href="../author/youngbeom-2/index.html" class="item-link-overlay"></a>
+		<div class="author-profile-image" style="background-image: url(http://localhost:2368/content/images/2022/06/favicon.png)"></div>
+		<div class="author-content">
+			<h4 class="is-bio no-cover-image"><a href="../author/youngbeom-2/index.html">youngbeom</a></h4>
+			<p>天生闲不下来的折腾青年 设计师 工具控 理想主义者</p>
+		</div>
+	</div>
+</div>		<div class="post-meta">
+			<div class="post-share">
+	<a class="twitter" href="https://twitter.com/intent/tweet?text=%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%9E%81%E7%8B%90GitLab%E8%AE%BE%E8%AE%A1%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD&amp;url=http://localhost:2368/jihugitlab-design-management/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/jihugitlab-design-management/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+	<a href="javascript:" class="copy" id="copy" data-clipboard-target="#link-value"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.33 13.04h-4.155v4.154h-2.078v-4.155H9.942v-2.077h4.155V6.806h2.078v4.156h4.154v2.077zM8.902 18.58a6.582 6.582 0 0 1 0-13.162c.068 0 .135.007.202.009a8.874 8.874 0 0 0-.001 13.144c-.067 0-.133.009-.2.009zm6.194-15.484a8.876 8.876 0 0 0-3.087.56A8.904 8.904 0 0 0 0 12a8.903 8.903 0 0 0 8.903 8.905 8.893 8.893 0 0 0 3.103-.563 8.854 8.854 0 0 0 3.09.563A8.903 8.903 0 0 0 24 12a8.904 8.904 0 0 0-8.903-8.903z"/></svg></a>
+	<span class="copy-popup">The link has been copied!</span>
+	<input type="text" value="http://localhost:2368/jihugitlab-design-management/" id="link-value">
+</div>		</div>
+	</div>
+</article>
+<aside class="section-prev-next">
+    <div class="prev-next-wrap">
+        <a href="../jihugitlab-gitbook/index.html" class="prev-post post tag-design tag-code tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2022/03/Jihu_GitLab-gitbook-1.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Newer Post</h5>
+                <h3>使用 极狐GitLab + Gitbook 发布 Handbook文档</h3>
+            </section>
+        </a>
+        <a href="../change-ghost-password-using-mysql/index.html" class="next-post post tag-code tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2022/02/reset-ghost-password-mysql-1.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Older Post</h5>
+                <h3>通过Mysql修改Ghost的登录密码</h3>
+            </section>
+        </a>
+    </div>
+</aside><div class="section-disqus">
+	</div>
+
+			</div>
+			<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			<a class="is-logo" href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a>
+		</div>
+		<div class="footer-nav">
+			<ul class="nav-list">
+				
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+			</ul>
+		</div>
+		<div class="footer-social-links flex">
+			<a href="https://www.facebook.com/youngbeomshen/" aria-label="link Facebook"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+			<a href="https://twitter.com/ShinYoungboom" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+	</div>
+	<div class="footer-copyright">
+		&copy; 2023 <a href="../index.html">乌托邦是个理想国</a>.
+		All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Nurui</a>.
+	</div>
+</footer>		</div>
+		<div id="notifications" class="global-notification">
+	<div class="subscribe">You’ve successfully subscribed to 乌托邦是个理想国</div>
+	<div class="signin">Welcome back! You’ve successfully signed in.</div>
+	<div class="signup">Great! You’ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Check your email for magic link to sign-in.</div>
+</div>
+				<script src="../assets/js/post.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/global.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/ityped.js%3Fv=6c9bd47ebb"></script>
+		
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>

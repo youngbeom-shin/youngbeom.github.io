@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>利用mapbox做建筑区位分析</title>
+
+    <link rel="icon" href="../../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="利用mapbox做建筑区位分析">
+    <meta property="og:description" content="建筑设计中的区位分析
+
+大学期间曾经选修了一门建筑学概论,那个学期的主要的课程内容是自己在首尔江南的任意场地建一个公共住宅项目.其中报告需要加入场地分析的内容,包括行车动线、人流动线、日照分析等等.
+
+这些区位分析在方案设计前期非常重要.不然会出现建筑本身非常精美,内部构造也合理宜居,但是教授可能会说:“你的想法和设计很好,但是可能不太适合这个场地.”这就是典型的设计前期对场地的区位分析没有做到位.
+
+site analysis可以包括”城市区位、基地位置和城市肌理等.需要考虑所在区域的发展规划、环境因素、社会因素、建筑形式、历史背景、人行与机动车道交通分析等等.
+
+
+在发表时印象最深的就是我们在选择场地进行独栋住宅设计时,关于停车位的设计讨论.在韩国当时的要求是车位数和建筑承载的户数之间是1.75:1的关系.也就是一个独立建筑设计目标如果是能容纳20户居住的话,那么他必须有一个最大能承载35辆车的停车场.这个比例是可以根据场地的人口密度和当地人均机动车保有量去计算,也是当时韩国建筑设计的一项必须遵循的标准.
+
+
+所以一个独栋住宅在占地一定的情况下想起一个多少层的楼限制因素之一就是停车">
+    <meta property="og:url" content="http://localhost:2368/site_analysis_using_mapbox/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/09/ussama-azam-j6Y4lyBFVdc-unsplash.jpg">
+    <meta property="article:published_time" content="2020-09-30T06:59:00.000Z">
+    <meta property="article:modified_time" content="2020-10-14T06:49:26.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="利用mapbox做建筑区位分析">
+    <meta name="twitter:description" content="建筑设计中的区位分析
+
+大学期间曾经选修了一门建筑学概论,那个学期的主要的课程内容是自己在首尔江南的任意场地建一个公共住宅项目.其中报告需要加入场地分析的内容,包括行车动线、人流动线、日照分析等等.
+
+这些区位分析在方案设计前期非常重要.不然会出现建筑本身非常精美,内部构造也合理宜居,但是教授可能会说:“你的想法和设计很好,但是可能不太适合这个场地.”这就是典型的设计前期对场地的区位分析没有做到位.
+
+site analysis可以包括”城市区位、基地位置和城市肌理等.需要考虑所在区域的发展规划、环境因素、社会因素、建筑形式、历史背景、人行与机动车道交通分析等等.
+
+
+在发表时印象最深的就是我们在选择场地进行独栋住宅设计时,关于停车位的设计讨论.在韩国当时的要求是车位数和建筑承载的户数之间是1.75:1的关系.也就是一个独立建筑设计目标如果是能容纳20户居住的话,那么他必须有一个最大能承载35辆车的停车场.这个比例是可以根据场地的人口密度和当地人均机动车保有量去计算,也是当时韩国建筑设计的一项必须遵循的标准.
+
+
+所以一个独栋住宅在占地一定的情况下想起一个多少层的楼限制因素之一就是停车">
+    <meta name="twitter:url" content="http://localhost:2368/site_analysis_using_mapbox/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/09/ussama-azam-j6Y4lyBFVdc-unsplash.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="2000">
+    <meta property="og:image:height" content="1125">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "利用mapbox做建筑区位分析",
+    "url": "http://localhost:2368/site_analysis_using_mapbox/",
+    "datePublished": "2020-09-30T06:59:00.000Z",
+    "dateModified": "2020-10-14T06:49:26.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/09/ussama-azam-j6Y4lyBFVdc-unsplash.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "keywords": "设计",
+    "description": "建筑设计中的区位分析\n\n大学期间曾经选修了一门建筑学概论,那个学期的主要的课程内容是自己在首尔江南的任意场地建一个公共住宅项目.其中报告需要加入场地分析的内容,包括行车动线、人流动线、日照分析等等.\n\n这些区位分析在方案设计前期非常重要.不然会出现建筑本身非常精美,内部构造也合理宜居,但是教授可能会说:“你的想法和设计很好,但是可能不太适合这个场地.”这就是典型的设计前期对场地的区位分析没有做到位.\n\nsite analysis可以包括”城市区位、基地位置和城市肌理等.需要考虑所在区域的发展规划、环境因素、社会因素、建筑形式、历史背景、人行与机动车道交通分析等等.\n\n\n在发表时印象最深的就是我们在选择场地进行独栋住宅设计时,关于停车位的设计讨论.在韩国当时的要求是车位数和建筑承载的户数之间是1.75:1的关系.也就是一个独立建筑设计目标如果是能容纳20户居住的话,那么他必须有一个最大能承载35辆车的停车场.这个比例是可以根据场地的人口密度和当地人均机动车保有量去计算,也是当时韩国建筑设计的一项必须遵循的标准.\n\n\n所以一个独栋住宅在占地一定的情况下想起一个多少层的楼限制因素之一就是停车",
+    "mainEntityOfPage": "http://localhost:2368/site_analysis_using_mapbox/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #000000;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">利用mapbox做建筑区位分析</h1>
+                <section class="post-meta">
+                    youngbeom -
+                    <time class="post-date" datetime="2020-09-30">30 9月 2020</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/09/ussama-azam-j6Y4lyBFVdc-unsplash.jpg" width="600" height="340" layout="responsive" 
+                alt="利用mapbox做建筑区位分析"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h3 id="-">建筑设计中的区位分析</h3><p>大学期间曾经选修了一门建筑学概论,那个学期的主要的课程内容是自己在首尔江南的任意场地建一个公共住宅项目.其中报告需要加入场地分析的内容,包括行车动线、人流动线、日照分析等等.</p><p>这些区位分析在方案设计前期非常重要.不然会出现建筑本身非常精美,内部构造也合理宜居,但是教授可能会说:“你的想法和设计很好,但是可能不太适合这个场地.”这就是典型的设计前期对场地的区位分析没有做到位.</p><p>site analysis可以包括”城市区位、基地位置和城市肌理等.需要考虑所在区域的发展规划、环境因素、社会因素、建筑形式、历史背景、人行与机动车道交通分析等等.</p><p><br />在发表时印象最深的就是我们在选择场地进行独栋住宅设计时,关于停车位的设计讨论.在韩国当时的要求是车位数和建筑承载的户数之间是1.75:1的关系.也就是一个独立建筑设计目标如果是能容纳20户居住的话,那么他必须有一个最大能承载35辆车的停车场.这个比例是可以根据场地的人口密度和当地人均机动车保有量去计算,也是当时韩国建筑设计的一项必须遵循的标准.</p><p><br />所以一个独栋住宅在占地一定的情况下想起一个多少层的楼限制因素之一就是停车位的数量,再加上地下停车场的坡度等等限制是有一个大致的极限的,教授为了让我们发挥最大的利用率和最多的可能性是不会让我们直接采用立体停车场这种不计成本的设计的.</p><p><br />当时做的区位分析大致就是场地所在的地方机动车的行驶动线,人流的动线,最好做到人车分流,距离最近的地铁站位置等等.主要就是分析基地周围的交通来确定场地的主次入口,人车动线.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>https://www.goodyclancy.com/projects/i-195-redevelopment-district-development-and-design-guidelines/</figcaption></figure><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption><a href="http://nicholasrespecki.com/physio40/?ref=localhost">[Physio-40 / Health and Architecture « Nicholas Respecki](http://nicholasrespecki.com/physio40/)</a></figcaption></figure><figure class="kg-card kg-image-card"></figure><p>除了人流动线之外就是公共资源的一些区位分布,这也是一个非常重要的一点,如果你的客户是希望选址来设计一栋自住的独栋建筑,就一定要根据家庭成员的组成去考虑选址,男女主人的工作,老人关心的医疗资源,孩子的学区情况进行综合考虑选址.</p><h3 id="-mapbox">为什么选择mapbox?</h3><p>过去的的制作区位图的方式都是CAD加上AI的方式,多少有些不够方便,原因之一就是视图固定,如果比例尺一旦改变又要重新做.增加了非常多的重复劳动,那我们为什么不尝试一下mapbox呢?</p><p><br /><strong>在做区位分析图的时候使用mapbox有什么好处呢?</strong></p><ol><li>首先是mapbox可以最大化的设计定制地图,设置字体、颜色、图标等等.</li><li>Mapbox可以将我们数据一直保存在云端,也可以下载到本地.不用产生大量的设计文件.</li><li>支持png、jpg格式的导出,且最大支持的图片是8k*8K像素.如果是导出png,可以打印在硫酸纸上堆叠不同的样式图层,直接做到设计分层,从最底层的森林公园,到上面的街道、医院、学校都可以导出成不同的png图片再打印出来.</li><li>可以在线预览,像其他地图一样拖动查看方便演示.</li></ol><p>总之利用mapbox的好处就是他能在全球范围内给不同类型的场地做标注,设计一次就好,不需要重复的去做,选定好了风格和需要标注的类型之后,可以导出不同地图比例尺下的图片资源.</p><h3 id="-mapbox-">在mapbox中筛选数据</h3><p>在mapbox studio中,我们只需要将所需要突出展现的数据在底图中选择出来,并且将其赋予一定的样式即可.</p><p>筛选数据其中有两种方式,一种可以是在mapbox默认提供的数据集当中选择,这种最简单也比较方便操作,只需要你对他的数据结构有一些了解就可以.另外一种方式是将事先获取到的数据通过上传的方式在mapbox中使用.</p><p>如果是有更加精准的数据集,建议采用手动上传的方式,因为mapbox在国内的数据不是非常全,如果有好的数据源是最好的选择.比如国内的百度、高德,但是收费比较贵,仅百度一年的商用授权费用要5W/年.</p><p>当然如果你对数据要求不是特别高也可以采用**<a href="https://overpass-turbo.eu/?ref=localhost">overpass turbo</a>**这样的网站去采集数据并导出.</p><p></p><h3 id="1-">1.选择底图风格</h3><figure class="kg-card kg-image-card"></figure><p>首先我们选择一个合适的底图风格去,我们最终选择了蓝图样式,选择这张底图的原因是色彩单一,突出线条和区块,更加的便于对比和查看.</p><p></p><h3 id="2-">2. 添加新的兴趣点图层</h3><figure class="kg-card kg-image-card"></figure><ul><li>点击左上角“+”符号</li><li>在new layer source一栏可以选择一个数据集</li><li>在type一栏选择数据的展示类型,看我们是希望展示的是一条道路、一个兴趣点或者一块场地.</li><li>筛选数据时我们可以用鼠标点击画面中间的某些元素,可以看到这个poi包含的所有字段,包括她的id、名字、数据类型等等.我们也可以使用这些作为筛选条件来让它显示或隐藏.</li></ul><p>为了将地图中我们所需要突出展示的区块做一个样式差异化,我们需要新增一个图层.<br />新增图层的数据集我们选择了默认可选的Mapbox Streets V6.因为我们要做的是一些例如学校、医院等数据的展示所以我们在数据集中选择了landuse的数据子集,这里面包含一些例如居民区、医院、学校、军事区域等等土地使用类型的数据.</p><p><a href="https://github.com/openmaptiles/openmaptiles/tree/master/layers/poi?ref=localhost">https://github.com/openmaptiles/openmaptiles/tree/master/layers/poi</a> 链接里面有所有的open street map里面POI(兴趣点)数据的分类.</p><p></p><h3 id="3-">3. 选择展示方式</h3><figure class="kg-card kg-image-card"></figure><p>在这里就可以选择我们要将我们的数据展示成什么效果,可以将医院、学校展示成点状,也可以是我们常见的symbol(可以配图标),也可以是热力图的形式,也有3D建筑(如果数据完善),多边形等.</p><p></p><p><strong>热力图</strong></p><p>我在这里选择type是university的数据展示成热力图的形式,并且让他们在zoom0-22的层级都展示出来(如果数据在该层级有内容).</p><p>之后我将我们的缩放等级放到12级,之后我们看一下数据效果.</p><figure class="kg-card kg-image-card"></figure><p>图中我是以北京市为例筛选出来的类型是university的数据,密密麻麻的非常多的数据点,绿色的是我所设的条件下满足条件的数据点,红色的是不符合数据的点,接下来我们再看一下所有符合条件的点在设计样式下热力图是怎样的一个展现.</p><figure class="kg-card kg-image-card"></figure><p>基本可以得出结论是北京的大学主要是在海淀、西城,少部分在朝阳,在大兴、丰台和亦庄基本是没有或者是很少.</p><p></p><p><strong>Circle</strong></p><p>我们还可以使用circle的数据展现方式模拟从一个点开始步行5分钟的生活圈的效果图.在图中我选定的是国家自然博物馆作为起点,在筛选数据时直接通过<strong>ID=1000033459076</strong>来作为筛选条件.</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>在这张图中其实mapbox并没有做的非常好用,他没有使用距离作为这个circle的度量,而是在stroke width上使用了px作为单位,还是没能脱离“设计”的思维,如果是实际应用场景下添加km会更方便,就可以在我们进行缩放时这个5km生活圈始终是相同比例.</p><p></p><p><strong>多边形</strong></p><p>多边形也是一种比较方便的Type,如果细心的话可以看到我们经常使用的某度和某德地图在不同类型的场地使用的颜色都是有区分的,比如医院、住宅、学校等.<br />我们在做场地分析的时候可以在多边形基础上给它加上一些图案(Pattern).</p><ul><li>首先我们新建一个图层命名为hospital</li><li>接下来选择Source为landuse的数据</li><li>将Type选为Fill、Filter选为class is hospital</li><li>最后一步在Style模式下设定我们希望的颜色、透明度、描边等样式</li><li>最后我们可以在设计软件里设计一个简单的图案,导出成svg格式上传到mapbox并应用</li></ul><figure class="kg-card kg-image-card"></figure><p>*注意pattern在设计的时候需要让相邻的图案拼接时不要有很明显的“接缝”</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>上传pattern</figcaption></figure><figure class="kg-card kg-image-card"></figure><p>我们通过以上的方法可以将我们选定的一种类型的场地赋予一块图案.</p><p></p><p><strong>Line</strong></p><figure class="kg-card kg-image-card"></figure><p>做人行与机动车道交通分析时我们可以使用类型line去展示,我们在地图的data模式下找到了一条类型为footway的数据,我们可以试着将它抽离出来.</p><ul><li>新建图层命名为footway</li><li>选择Source为road、Type为Line、Filter为type,之后选择type为footway的数据.</li><li>最后一步就是在style模式下给footway赋予一个颜色、透明度、宽度等样式.</li></ul><figure class="kg-card kg-image-card"></figure><h3 id="--1">输出图片资源</h3><figure class="kg-card kg-image-card"></figure><p>当我们选择好我们想要输出图片的经纬度坐标以及相应的比例尺后,就可以将我们的图片导出.点击网页右上角的Print,可以选择希望导出的图片的高宽、分辨率和格式,现在mapbox支持最大8Kx8K像素、最高300ppi的分辨率的JPG或者PNG图片.<br />需要注意的是导出图片的次数是有100张的限制的,超出次数可以联系客服解锁付费下载.</p><h3 id="--2">生成地图链接</h3><figure class="kg-card kg-image-card"></figure><p><a href="https://api.mapbox.com/styles/v1/youngbeom/cjwiv3p5j00aa1codzcvvt19i.html?fresh=true&amp;title=view&amp;access_token=pk.eyJ1IjoieW91bmdiZW9tIiwiYSI6ImNpc2ZxMXpvbTAxb2wzbm52cWI3d21xd3kifQ.-8V1Aipme2wTcp_9R95p7w&amp;ref=localhost#15.01/39.90276/116.39468"><strong>预览链接</strong></a><br />为了我们可以实时看到我们的地图,可以将我们mapbox制作完成的地图生成一个可以预览的链接.点击右上角<strong>share</strong>就可以在浏览器中实时看到了.</p><p>如果你不希望别人可以复制你的样式,你可以选择将地图设置为Private,除此之外它还支持更多的开发者选项,你可以将它应用在你的其他网页或者安卓、iOS应用中.</p><h3 id="--3">存在的不足</h3><p>其实在区位分析中mapbox很好的帮助我们去可视化的展现了一些公共资源的分布情况,但是在实际应用中我们还要更精确的了解这些资源的数量以及质量等,比如我们想知道海淀区和西城区的学校的数量以及各校各专业的排名情况,又或者商场分布情况,再根据商场的规模及人流量分成ABC类去综合筛选.</p><p>这些还是仅仅是通过mapbox是无法统计的,我们需要借助其他的方式去统计.当然mapbox的定位现在还不是一个做商业统计的地图应用,不知道后续会不会拓展其他的能力.</p><hr></hr><p><strong>相关网页</strong></p><p>mapbox studio<br /><a href="https://www.mapbox.com/mapbox-studio/?ref=localhost">https://www.mapbox.com/mapbox-studio/</a></p><p>像素地图,支持给不同的“地图块”填色<br /><a href="http://pixelmap.amcharts.com/?ref=localhost">Pixel Map Generator | amCharts</a></p><p>场地模型,可以导出支持CAD、SketchUp、Rhino、AI的格式.<a href="https://cadmapper.com/?ref=localhost">Worldwide map files for any design program | CADMAPPER</a></p><p>历史要素分析<br /><a href="http://localhost:2368/site_analysis_using_mapbox/www.webdog.cn">www.webdog.cn</a></p><p>地图慧,地图分析工具:<br /><a href="http://localhost:2368/site_analysis_using_mapbox/www.dituhui.com">www.dituhui.com</a></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        <h3>乌托邦是个理想国</h3>
+            <p>柏拉图说:乌托邦是个理想国</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

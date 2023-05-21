@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>地图UI设计工作流-从mapbox到sketch</title>
+
+    <link rel="icon" href="../../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="../index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="地图UI设计工作流-从mapbox到sketch">
+    <meta property="og:description" content="前言
+
+因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。
+
+
+但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。
+
+后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这">
+    <meta property="og:url" content="http://localhost:2368/mapbox-to-sketch/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg">
+    <meta property="article:published_time" content="2018-07-03T04:07:00.000Z">
+    <meta property="article:modified_time" content="2020-04-10T10:27:32.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta property="article:author" content="https://www.facebook.com/youngbeomshen">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="地图UI设计工作流-从mapbox到sketch">
+    <meta name="twitter:description" content="前言
+
+因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。
+
+
+但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。
+
+后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这">
+    <meta name="twitter:url" content="http://localhost:2368/mapbox-to-sketch/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta name="twitter:creator" content="@ShinYoungboom">
+    <meta property="og:image:width" content="1900">
+    <meta property="og:image:height" content="870">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2022/06/favicon.png"
+        },
+        "url": "http://localhost:2368/author/youngbeom-2/",
+        "sameAs": [
+            "https://www.facebook.com/youngbeomshen",
+            "https://twitter.com/ShinYoungboom"
+        ]
+    },
+    "headline": "地图UI设计工作流-从mapbox到sketch",
+    "url": "http://localhost:2368/mapbox-to-sketch/",
+    "datePublished": "2018-07-03T04:07:00.000Z",
+    "dateModified": "2020-04-10T10:27:32.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg",
+        "width": 1900,
+        "height": 870
+    },
+    "keywords": "设计",
+    "description": "前言\n\n因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是mapbox studio，另一个是maputnik，后者是瑞士的一个大学生Lukas Martinelli创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。\n\n\n但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的AR SDK包以及自动驾驶相关的一些项目都是具有战略意义的一些产品。\n\n后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这",
+    "mainEntityOfPage": "http://localhost:2368/mapbox-to-sketch/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #000000;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">地图UI设计工作流-从mapbox到sketch</h1>
+                <section class="post-meta">
+                    youngbeom -
+                    <time class="post-date" datetime="2018-07-03">03 7月 2018</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2020/03/mapbox-to-sketch-bg.jpg" width="600" height="340" layout="responsive" 
+                alt="地图UI设计工作流-从mapbox到sketch"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h2 id="-">前言</h2><p>因为公司的主要产品是一款地图产品，所以在毕业后到现在的两年时间，除了做产品的界面还有其他的一些设计以外，还接触到关于地理信息的一些产品，设计地图的只要是两款产品，一个是<a href="https://www.mapbox.com/?ref=localhost">mapbox studio</a>，另一个是maputnik，后者是瑞士的一个大学生<a href="https://github.com/lukasmartinelli?ref=localhost">Lukas Martinelli</a>创立的项目，这里面还有一个故事，虽说两个公司都是做开源数据的一些项目，但是lukas认为mapbox在一些标准的设定以及开源上没有做到真正的开源，所以他在大学时就把mapbox定的一些标准通过自己定义的schema重新改写了一番，做出来一个GitHub上的公共库让大家都能使用，常常钦佩这样的一类人，做项目并不是以盈利为目的，但是却创造了更大的价值。</p><p><br />但是mapbox的创新开发速度是飞快的，尤其是最近拿到了软银的战略投资后，比如他们在基于unity引擎开发的<a href="https://www.mapbox.com/augmented-reality/?ref=localhost">AR SDK</a>包以及<a href="https://www.mapbox.com/automotive/?ref=localhost">自动驾驶</a>相关的一些项目都是具有战略意义的一些产品。</p><p>后来括谷歌还有特斯拉等美国顶尖公司的众多管理层以及精英都加入了mapbox，17年的时候lukas也加入到了mapbox，现在maputnik只有十几个人在继续维护，但是不可否认这家小公司在开源这件事情上作出的贡献，因为他们的存在让各大公司在使用或搭建地图服务时相比只有谷歌时多了一份选择。</p><h2 id="carto-css">carto css</h2><p>起初在还未接触mapbox的时候还没有设计地图的概念，那时候的地图样式是通过<a href="https://tumluliu.gitbooks.io/carto_zh-cn/?ref=localhost">carto css</a>渲染出来的，样式几乎没有设计感，色彩的使用和搭配也是没有规范，翻出来很老旧的地图样式，效果就是下面这样的。</p><h3 id="--1">项目初期样式效果</h3><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>项目初期样式效果</figcaption></figure><h3 id="--2">改版后地图样式</h3><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>改版后地图样式</figcaption></figure><h3 id="--3">设计中对地图的需求</h3><p>在很多之前的设计稿中，我需要用到地图界面在设计中时都会去百度截取所需的区域，然后将它粘贴到我的设计稿中，这样看起来的效果就是我们没有办法去“设计”地图，包括色板、图标、文字样式等。</p><h3 id="snazzy-maps">snazzy maps</h3><p><a href="https://snazzymaps.com/?ref=localhost">snazzy map</a>是基于谷歌地图重新设计样式的一个网站，网站内有非常多的样式可以学习，虽然很大程度上达到了定制化的目的，但是还是有非常多的限制，不能在数据或者更细节的样式上做调整，对于图层的支持上也不是很多。</p><h2 id="-mapbox">使用mapbox</h2><figure class="kg-card kg-image-card"></figure><p>通过mapbox的官网介绍，他们是一家为web及移动应用提供位置服务及导航的平台。mapbox已经是一款非常强大的平台，对于我这样的设计师来讲已经满足了我几乎所有的需求(除了数据获取)，包括地图颜色、图标定制、字体库等。对于新上手的设计师mapbox studio也有一些设计样本提供学习和使用。</p><h3 id="-mapbox-studio-">使用mapbox studio设计地图样式</h3><figure class="kg-card kg-image-card"></figure><p>首先你需要注册一个账号，通过这个账号会保留你所设计的样式，同时这个账号也是一个开发者账号，你可以通过平台提供的access token来将你设计的样式应用在网页或者移动应用当中。<br />注册完成后可以看到右上角有几个入口：</p><ul><li>home</li><li>styles</li><li>tilesets</li><li>datasets</li></ul><h3 id="--4">设计一款全新的地图样式</h3><p>点击style(样式)，进入后可以看到你设计过的全部的样式文件，如果你还没有设计过地图样式，这个部分会是空白的，点击create创建一款全新的地图，在这里你可以选择利用mapbox给你提供的基础样式的基础上进行创作，或者选择一款空白的地图来手动添加图层。</p><p><br />也可以选择第二种方式就是上传已有的样式文件来生成地图，这里的上传格式要求json格式的文件。</p><p><br />对于第一次操作的设计师来讲，最好的建议是先去观察体验基础款的地图样式设计，因为在这份地图里面包含了几乎所有的地图图层，包括道路，植被类型，用地类型，甚至兴趣点的数据和样式图标都是按照规范设定好的，这样就能知道数据的结构和mapbox的设计逻辑，其实进入设计面板大家很容易就能看到左边的图层栏很像Adobe的layer，就是一层一层覆盖的，从最基础的土地类型到覆盖在上面的植被到道路最后建筑和兴趣点，这就方便理解了。</p><figure class="kg-card kg-image-card"></figure><p>点击creat就会打开<strong>地图样式编辑器</strong>这里就是所有的UI样式展现的地方，最核心的样式设计的界面！</p><figure class="kg-card kg-image-card"></figure><p>点击左上角的<strong>add layer</strong>按钮去添加一个新的图层，点击**No tileset，click to select.**就会去手动的添加一个数据来源，这里的tile中文翻译过来是瓷砖 瓦片的意思，地图的样式就是一个一个的“瓦片”构成，如果大家在网络状态不好的时候打开地图就会发现界面的加载是一块一块的，这个就是瓦片。在mapbox中提供多种的数据来源比如：</p><ul><li>[image:EF92D06B-4F02-491B-BF8A-5C7ECFA9B67C-10857-00008FBFA8F01101/屏幕快照 2018-07-13 下午3.46.03.png]Mapbox Satellite</li><li>Mapbox Streets v7</li><li>Mapbox Traffic V1</li><li>Mapbox Terrain V2</li><li>也可以手动上传自己本地已有的数据</li></ul><figure class="kg-card kg-image-card"></figure><p>在这里我选择了Mapbox Streets v7里面的<strong>water</strong>类型的数据，有了数据源我们就可以创建图层对数据进行样式的编辑了。颜色可以设置在不同的zoom级显示不同的颜色，比如zoom比较小时海洋的颜色浅一些，zoom放大到高一些的时候颜色变成深蓝色，等等。除此之外还可以给海洋加上一些图案，比如波纹，设置透明度，描边等等…</p><figure class="kg-card kg-image-card"></figure><p>对mapbox赋予颜色比如我给海洋的颜色赋值**HSL(210,29,80)**这样它就和陆地的视觉上出现差异，渐渐有了地图的雏形。</p><figure class="kg-card kg-image-card"></figure><p>接下来我们可以添加更多的图层，比如国境线，我们在tileset里面选择<strong>admin</strong> 之后可以选择让他出现的层级，比如国境线让他在0～22的层级上出现，这样就会在放大到最大的层级时都有数据展现。</p><h3 id="--5">数据的展现方式</h3><p>根据数据的不同类型mapbox给出了不同的展现方式，</p><ul><li>fill</li><li>fill extrusion</li><li>line</li><li>circle</li><li>symbol</li><li>heatmap<br />这都是数据在地图上的不同展现类型，比如国境线是line，草坪是fill，带图标的兴趣点是symbol，或者如果你有纽约的出租车运营数据，你也可以将数据以热力图的形式用heatmap类型来展现。</li></ul><h3 id="-cartogram">创新的方式去设计地图样式-Cartogram</h3><figure class="kg-card kg-image-card"></figure><p><a href="https://www.mapbox.com/cartogram/?ref=localhost">Cartogram</a>是mapbox官方提供的一款有意思的网站，他可以通过你拖拽一张图片去自动分析照片中的配色，然后给出他的一个配色选择，但是他也不是所有的图层都支持，现在的版本中Cartogram支持<strong>land</strong> <strong>building</strong>  <strong>water</strong> <strong>label</strong> 这四种图层类型占据了地图组成的大部分面积，所以四种类型的色彩发生变化对整个视觉的改变是非常大的，我们在设计的时候抓取风格调性可以通过这种方式来设计。</p><figure class="kg-card kg-image-card"></figure><p>我在这里使用的是mapbox cartogram默认的一张黑白照片，之后点击屏幕上方的<strong>saved style</strong>之后就可以在你的mapbox studio里面看到你的配色之后的地图了！非常的方便快捷。</p><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><h3 id="--6">发布地图样式</h3><p>通过上述的步骤，我们已经设计了一款个性化的地图，现在我们需要做的就是将设计好的地图<strong>发布</strong>出去，在mapbox studio中发布地图可以点击右上角的<strong>publish your style</strong>，点击发布之后你就可以通过点击<strong>share，develop，and use your style</strong>来使用这分地图。</p><figure class="kg-card kg-image-card"></figure><p>下图中的右下角有个<strong>Style URL</strong>，我们需要使用这个<a href="https://api.mapbox.com/styles/v1/youngbeom/cjjjpztvads5s2sm93o6x9zeo.html?fresh=true&amp;title=true&amp;access_token=pk.eyJ1IjoieW91bmdiZW9tIiwiYSI6ImNpc2ZxMXpvbTAxb2wzbm52cWI3d21xd3kifQ.-8V1Aipme2wTcp_9R95p7w&amp;ref=localhost#13.0/40.725100/-74.005100/0">链接</a>来在我们的sketch中使用这份地图，我们点击复制！</p><figure class="kg-card kg-image-card"></figure><h2 id="-mapbox-sketch">从mapbox到sketch</h2><p>我们到这里就已经掌握了基础的mapbox studio的使用方法，接下来我们就要进入sketch当中，我们需要去下载一个<a href="https://github.com/bouchenoiremarc/Sketch-Maps?ref=localhost">Sketch Maps</a>插件。下载完成插件并安装之后，</p><ol><li>打开sketch并新建一个画布</li><li>新建一个矩形</li><li>选中矩形之后，点击<strong>Plugins—Sketch Maps—Fill with Map</strong></li><li>在插件弹出框内输入你要生成地图的地址，比如法国的埃菲尔铁塔</li><li>设置地图的zoom level (地图缩放层级)，bearing (方位角度-最大360度)和pitch (视角，比如有3D模式的地图-最大60度)</li><li>记住在mapbox设计完地图样式之后的 style URL，可以直接复制粘贴到插件弹窗内</li><li>点击确认生成地图</li></ol><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><figure class="kg-card kg-image-card"></figure><p>到这一步你就能看到亲自设计的地图样式已经填充到矩形里面了，这在一些页面的设计中会经常用到地图的填充，如果在这些页面中能用上自己品牌调性的地图也是非常提高产品体验的部分，绝对会是一个加分项，比如点评的境外地图部分就可以用mapbox提供的服务，在国外的应用中像snapchat和lonelyplanet已经开始使用mapbox的服务。其实mapbox收费是阶梯制的，对于个人开发者利用地图服务还是很划算的，这里是详细<a href="https://www.mapbox.com/pricing/?ref=localhost">价格说明</a></p><h2 id="--7">结论</h2><p>mapbox真的是一款非常强大的地图设计工具，如果你有一些数据想做为可视化的展现，或者你想将数据作为服务提供给客户，mapbox绝对可以满足大部分需求，下面有视频可以作为教材去更加深入的了解mapbox这款工具，油管的视频需要准备梯子。</p><figure class="kg-card kg-embed-card"><amp-youtube width="600" height="350" data-videoid="videoseries" layout="responsive"></amp-youtube></figure><figure class="kg-card kg-embed-card"><amp-youtube width="600" height="350" data-videoid="videoseries" layout="responsive"></amp-youtube></figure><p>如果在尝试的过程遇到一些问题或者好玩的尝试欢迎交流讨论，希望遇到更多志同道合的人一起学习！</p><p>参考链接：</p><p><a href="https://studio.mapbox.com/?ref=localhost">https://studio.mapbox.com/</a></p><p>http://apps.mapbox.com/cartogram</p><p><a href="https://blog.yipl.com.np/map-ui-design-workflow-mapbox-to-sketch-3cb281212783?ref=localhost">https://blog.yipl.com.np/map-ui-design-workflow-mapbox-to-sketch-3cb281212783</a></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2023/05/Favicon.png" width="50" height="50" layout="fixed" alt="乌托邦是个理想国"></amp-img>
+        <h3>乌托邦是个理想国</h3>
+            <p>柏拉图说:乌托邦是个理想国</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

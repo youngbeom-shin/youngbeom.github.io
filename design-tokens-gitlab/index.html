@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="auto-dark-mode">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>使用 Figma token + GitLab 创建设计系统</title>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap">		<link rel="stylesheet" type="text/css" href="../assets/css/screen.css%3Fv=6c9bd47ebb.css">
+		<link rel="icon" href="../content/images/size/w256h256/2023/05/Favicon.png" type="image/png">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="amp/index.html">
+    
+    <meta property="og:site_name" content="乌托邦是个理想国">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用 Figma token + GitLab 创建设计系统">
+    <meta property="og:description" content="设计系统及其相对应的各种 UI 工具是加速设计和开发过程的绝佳工具。但是在设计系统适应设计和开发环境之间还是会有一些“延迟”或者说“gap”。
+
+因此在设计过程中引入 Design Token （设计令牌）是一个非常好的方法，它可以让我们在设计以及开发过程中更快速的进行设计系统的维护和更改。
+
+这篇文章主要是介绍我们如何在 Figma 中使用 Figma Token这款插件来更便捷的管理我们的设计系统，并且将设计的变化快速的反应在开发环境中。
+
+文章涵盖的内容包括：
+
+ * 什么是 Figma Design Token
+ * Design Token有什么好处
+ * 如何创建 Figma Token
+ * 连接到GitLab/GitHub
+ * 使用 Zapier 同步记录到 Slack 群组
+
+
+1.什么是 Figma Design Tokens？
+
+设计师在设计一个产品的用户界面时，通常都会将一些基础的元素进行设计和复用，比如颜色、字体、边距、阴影等等。那我们是否可以将这些基础的部分都提取出来，生成一个表，产品的开发环境中的代码和">
+    <meta property="og:url" content="http://localhost:2368/design-tokens-gitlab/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2023/05/Design-tokens-GitLab.png">
+    <meta property="article:published_time" content="2022-06-21T04:06:00.000Z">
+    <meta property="article:modified_time" content="2023-05-19T14:33:05.000Z">
+    <meta property="article:tag" content="设计">
+    
+    <meta property="article:publisher" content="https://www.facebook.com/youngbeomshen/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="使用 Figma token + GitLab 创建设计系统">
+    <meta name="twitter:description" content="设计系统及其相对应的各种 UI 工具是加速设计和开发过程的绝佳工具。但是在设计系统适应设计和开发环境之间还是会有一些“延迟”或者说“gap”。
+
+因此在设计过程中引入 Design Token （设计令牌）是一个非常好的方法，它可以让我们在设计以及开发过程中更快速的进行设计系统的维护和更改。
+
+这篇文章主要是介绍我们如何在 Figma 中使用 Figma Token这款插件来更便捷的管理我们的设计系统，并且将设计的变化快速的反应在开发环境中。
+
+文章涵盖的内容包括：
+
+ * 什么是 Figma Design Token
+ * Design Token有什么好处
+ * 如何创建 Figma Token
+ * 连接到GitLab/GitHub
+ * 使用 Zapier 同步记录到 Slack 群组
+
+
+1.什么是 Figma Design Tokens？
+
+设计师在设计一个产品的用户界面时，通常都会将一些基础的元素进行设计和复用，比如颜色、字体、边距、阴影等等。那我们是否可以将这些基础的部分都提取出来，生成一个表，产品的开发环境中的代码和">
+    <meta name="twitter:url" content="http://localhost:2368/design-tokens-gitlab/">
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2023/05/Design-tokens-GitLab.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="youngbeom">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="设计">
+    <meta name="twitter:site" content="@ShinYoungboom">
+    <meta property="og:image:width" content="2160">
+    <meta property="og:image:height" content="1440">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "乌托邦是个理想国",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/05/publication-logo.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "youngbeom",
+        "url": "http://localhost:2368/author/youngbeom/",
+        "sameAs": []
+    },
+    "headline": "使用 Figma token + GitLab 创建设计系统",
+    "url": "http://localhost:2368/design-tokens-gitlab/",
+    "datePublished": "2022-06-21T04:06:00.000Z",
+    "dateModified": "2023-05-19T14:33:05.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2023/05/Design-tokens-GitLab.png",
+        "width": 2160,
+        "height": 1440
+    },
+    "keywords": "设计",
+    "description": "设计系统及其相对应的各种 UI 工具是加速设计和开发过程的绝佳工具。但是在设计系统适应设计和开发环境之间还是会有一些“延迟”或者说“gap”。\n\n因此在设计过程中引入 Design Token （设计令牌）是一个非常好的方法，它可以让我们在设计以及开发过程中更快速的进行设计系统的维护和更改。\n\n这篇文章主要是介绍我们如何在 Figma 中使用 Figma Token这款插件来更便捷的管理我们的设计系统，并且将设计的变化快速的反应在开发环境中。\n\n文章涵盖的内容包括：\n\n * 什么是 Figma Design Token\n * Design Token有什么好处\n * 如何创建 Figma Token\n * 连接到GitLab/GitHub\n * 使用 Zapier 同步记录到 Slack 群组\n\n\n1.什么是 Figma Design Tokens？\n\n设计师在设计一个产品的用户界面时，通常都会将一些基础的元素进行设计和复用，比如颜色、字体、边距、阴影等等。那我们是否可以将这些基础的部分都提取出来，生成一个表，产品的开发环境中的代码和 Figma 的设计稿都可以以这个表作为 SSOT（",
+    "mainEntityOfPage": "http://localhost:2368/design-tokens-gitlab/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.48">
+    <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="4936191ae23ea50aef0723c6b5" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js%3Fv=6c9bd47ebb"></script><style>:root {--ghost-accent-color: #000000;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css%3Fv=6c9bd47ebb.css">
+	</head>
+	<body class="post-template tag-design global-post-authors-disable">
+		<div class="global-wrap">
+			<div class="section-content-wrap">
+				<div class="section-header wrap">
+	<header class="header-wrap flex">
+		<div class="header-logo">
+			<div class="is-logo"><a href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a></div>
+
+		</div>
+		<div class="header-nav">
+			<nav class="nav-wrap">
+				<label for="toggle" class="nav-label hamburger hamburger-minus">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</label>
+				<input type="checkbox" id="toggle" class="nav-toggle">
+				<ul class="nav-list">
+					
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+					<li class="section-members-login-panel">
+	<a class="members-signin" href="http://localhost:2368/signin/">Sign in</a>
+	<a class="members-signup" href="http://localhost:2368/signup/">Sign up</a>
+</li>									</ul>
+			</nav>
+		</div>
+		<div class="blog-description flex">柏拉图说:乌托邦是个理想国</div>
+	</header>
+</div>				<article>
+	<div class="section-featured is-featured-image">
+	<div class="featured-image" style="background-image: url(../content/images/2023/05/Design-tokens-GitLab.png)"></div>
+	<div class="featured-wrap flex">
+			<div class="featured-content">
+				<div class="tags-wrap">
+					<a class="post-tag global-tag" href="../tag/design/index.html">设计</a>
+				</div>
+				<h1 class="white">使用 Figma token + GitLab 创建设计系统</h1>
+				<div class="item-meta white">
+					<span>by</span>
+					<a href="../author/youngbeom/index.html">youngbeom</a>
+					<time datetime="2022-06-21">1 年前</time>
+					<span class="reading-time"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path d="M10.1907692,24 C4.5625628,24 0,19.4374372 0,13.8092308 C0,8.18102433 4.5625628,3.61846154 10.1907692,3.61846154 C15.8189757,3.61846154 20.3815385,8.18102433 20.3815385,13.8092308 C20.3815385,19.4374372 15.8189757,24 10.1907692,24 Z M10.1907692,22 C14.7144062,22 18.3815385,18.3328677 18.3815385,13.8092308 C18.3815385,9.28559383 14.7144062,5.61846154 10.1907692,5.61846154 C5.6671323,5.61846154 2,9.28559383 2,13.8092308 C2,18.3328677 5.6671323,22 10.1907692,22 Z" id="Oval"></path><path d="M7.53230769,2.32923077 C6.98002294,2.32923077 6.53230769,1.88151552 6.53230769,1.32923077 C6.53230769,0.776946019 6.98002294,0.329230769 7.53230769,0.329230769 L12.9225711,0.329230769 C13.4748559,0.329230769 13.9225711,0.776946019 13.9225711,1.32923077 C13.9225711,1.88151552 13.4748559,2.32923077 12.9225711,2.32923077 L7.53230769,2.32923077 Z" id="Line-2"></path><path d="M13.2928932,9.29289322 C13.6834175,8.90236893 14.3165825,8.90236893 14.7071068,9.29289322 C15.0976311,9.68341751 15.0976311,10.3165825 14.7071068,10.7071068 L10.897876,14.5163376 C10.5073517,14.9068618 9.87418674,14.9068618 9.48366245,14.5163376 C9.09313816,14.1258133 9.09313816,13.4926483 9.48366245,13.102124 L13.2928932,9.29289322 Z" id="Line"></path></svg> 8 min read</span>
+				</div>
+		</div>
+	</div>
+</div>	<div class="section-post wrap">
+		<div class="post-wrap ">
+			<p>设计系统及其相对应的各种 UI 工具是加速设计和开发过程的绝佳工具。但是在设计系统适应设计和开发环境之间还是会有一些“延迟”或者说“gap”。</p><p>因此在设计过程中引入 Design Token （设计令牌）是一个非常好的方法，它可以让我们在设计以及开发过程中更快速的进行设计系统的维护和更改。</p><p>这篇文章主要是介绍我们如何在 Figma 中使用 Figma Token这款插件来更便捷的管理我们的设计系统，并且将设计的变化快速的反应在开发环境中。</p><p>文章涵盖的内容包括：</p><ul><li>什么是 Figma Design Token</li><li>Design Token有什么好处</li><li>如何创建 Figma Token</li><li>连接到GitLab/GitHub</li><li>使用 Zapier 同步记录到 Slack 群组</li></ul><h2 id="1%E4%BB%80%E4%B9%88%E6%98%AF-figma-design-tokens%EF%BC%9F">1.什么是 Figma Design Tokens？</h2><p>设计师在设计一个产品的用户界面时，通常都会将一些基础的元素进行设计和复用，比如颜色、字体、边距、阴影等等。那我们是否可以将这些基础的部分都提取出来，生成一个表，产品的开发环境中的代码和 Figma 的设计稿都可以以这个表作为 SSOT（唯一可信源）来进行设计和开发。<br></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/1-1.jpg" class="kg-image" alt loading="lazy" width="1200" height="320" srcset="../content/images/size/w600/2023/05/1-1.jpg 600w, ../content/images/size/w1000/2023/05/1-1.jpg 1000w, ../content/images/2023/05/1-1.jpg 1200w" sizes="(min-width: 720px) 720px"></figure><p>我们在后续的设计过程中就可以直接修改表中的参数应用于设计和代码，而不是传统的设计师设计样式，开发修改样式代码，最后部署上线这样一套费时费力的流程。</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/2-3.jpg" class="kg-image" alt loading="lazy" width="1200" height="320" srcset="../content/images/size/w600/2023/05/2-3.jpg 600w, ../content/images/size/w1000/2023/05/2-3.jpg 1000w, ../content/images/2023/05/2-3.jpg 1200w" sizes="(min-width: 720px) 720px"></figure><p><br></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/3.jpg" class="kg-image" alt loading="lazy" width="1200" height="612" srcset="../content/images/size/w600/2023/05/3.jpg 600w, ../content/images/size/w1000/2023/05/3.jpg 1000w, ../content/images/2023/05/3.jpg 1200w" sizes="(min-width: 720px) 720px"></figure><h2 id="2design-tokens-%E7%9A%84%E5%A5%BD%E5%A4%84">2.Design Tokens 的好处</h2><p>以下是我们使用 Figma Token 的一些好处:</p><ul><li>加快交付流程</li><li>提高开发设计一致性</li><li>提升设计流程自动化</li></ul><p>使用 DesignToken 不仅可以加速设计到开发交付的过程,还有助于保持设计和开发之间的一致性问题.在设置好 Design Token 之后,我们可以将变更同步到代码仓库中,这将有助于我们将重复的工作进行自动化.帮助我们减少工作当中不必要的时间浪费.</p><p>因为我们在设置 Token 时都会讲一些基础的元素进行命名,所以在不管是设计师还是研发在引用时都更加的直观便于理解,对于颜色也不需要记住具体的色值,而是应用我们预先命名好的名字就可以.</p><p>在一些原始的设计流程中,设计师会将需求绘制成设计稿,研发同事需要将设计稿开发还原,这个流程是产品设计师和前端研发最头痛的部分,混乱的设计参数或者还原度不佳的开发结果都是经常出现的问题,验收的过程将会非常耗时,但使用 Token 之后,开发摆脱了使用硬代码的方式,根据使用场景输入 Token 名称的前缀就可以快速使用,提高了编程效率,这样一来只要是设计师和研发都能遵守一些基础的规范,就能做到精准还原,双方的工作量都会少很多.</p><h2 id="3%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA-figma-token">3.如何创建 Figma Token</h2><p>有非常多的基础组件可以被设置成 Token,但是为了专注于系统的简单和高效,我们往往会将最基础的元素设置为 Token.比如下面的这些:</p><ul><li>颜色</li><li>透明度</li><li>字体</li><li>阴影</li><li>圆角</li><li>间距</li><li>动效曲线</li></ul><p>为了创建一个 Design Token,我们需要使用到一个 Figma 插件:<a href="https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens?ref=localhost">Figma Tokens</a></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.04.37.png" class="kg-image" alt loading="lazy" width="2000" height="1422" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.04.37.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.04.37.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.04.37.png 1600w, ../content/images/2023/05/--2022-06-13-17.04.37.png 2166w" sizes="(min-width: 720px) 720px"></figure><p>通过这款插件我们可以通过设计稿生成一个 JSON 格式的 Design<br>Token,同样也可以通过引入 JSON 文件来应用设计系统.</p><p>在这款插件里,我们可以通过可视化的方式以及编码的方式创建 Toekns,插件中的所有 Tokens 都可以相互引用,下面我们会具体演示如何使用这个插件.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.18.43.png" class="kg-image" alt loading="lazy" width="2000" height="1440" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.18.43.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.18.43.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.18.43.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-13-17.18.43.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>以当前使用的 109 版本的插件为例,我需要将设计稿中的一些规范应用到 Tokens 中.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.31.08-2.png" class="kg-image" alt loading="lazy" width="2000" height="1304" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.31.08-2.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.31.08-2.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.31.08-2.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-13-17.31.08-2.png 2400w" sizes="(min-width: 720px) 720px"></figure><p></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.32.09-2.png" class="kg-image" alt loading="lazy" width="2000" height="439" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.32.09-2.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.32.09-2.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.32.09-2.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-13-17.32.09-2.png 2400w" sizes="(min-width: 720px) 720px"></figure><p><br>上图是在产品中间距的应用规范,我们需要将间距作为 Token,需要填写 Token  <code>名称</code>、<code>值</code>以及<code>描述</code>.在填写<code>值</code>一栏时我们可以使用运算方式填写.比如:</p><pre><code>"4px": {
+      "value": "{spacing.2px} *2",
+      "type": "spacing",
+      "description": "4px 用于组件内或图标与相关文本之间的间距。"
+</code></pre><p>同理 8px 的 value 可以是 {spacing.4px} *2,这样早我们需要将间距整体变成 2 倍时,只需要将基础的 spacing.2px 乘以 2,就可以应用到所有的间距 Toekn 当中.</p><p>设置颜色 Token 时可以在命名时以 UI.Blue.500 这种方式命名,在插件中展示时会自动根据<code>.</code>来分级.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.40.02.png" class="kg-image" alt loading="lazy" width="2000" height="881" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.40.02.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.40.02.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.40.02.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-13-17.40.02.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>通过设置好不同的 tokens 后,我们也可以根据不同的 tokens 组合出不同的 themes,比如 Light/Dark mode. Figma tokens 插件支持一键将文稿中的设计图切换主题.<br></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/Example-Themes.png" class="kg-image" alt loading="lazy" width="1601" height="1366" srcset="../content/images/size/w600/2023/05/Example-Themes.png 600w, ../content/images/size/w1000/2023/05/Example-Themes.png 1000w, ../content/images/size/w1600/2023/05/Example-Themes.png 1600w, ../content/images/2023/05/Example-Themes.png 1601w" sizes="(min-width: 720px) 720px"></figure><h2 id="%E8%BF%9E%E6%8E%A5%E5%88%B0-gitlab">连接到 GitLab</h2><p>等所有的 Tokens 都设定完成后我们就可以将 Token 导出了,我们可以选择导出到本地,也可以将 Tokens 上传至 GitLab、GitHub 等.</p><p>同步至 GitLab 需要我们在 <a href="https://gitlab.com/-/profile/personal_access_tokens?ref=localhost">Personal Access Tokens</a>页面中生成一个可供 Figma 插件使用的 Access Token.<br></p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-13-17.44.48.png" class="kg-image" alt loading="lazy" width="2000" height="726" srcset="../content/images/size/w600/2023/05/--2022-06-13-17.44.48.png 600w, ../content/images/size/w1000/2023/05/--2022-06-13-17.44.48.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-13-17.44.48.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-13-17.44.48.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>在填入 Personal Access Token 之后,需要指定一个项目,保存之后我们就可以将我们的 Design Tokens 同步至 GitLab 了,它支持双向同步,用户可以在 Figma 中编辑并 push 到 GitLab,也可以在 GitLab 中编辑完成后在插件中 pull 到 Figma 里.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-20-14.34.41.png" class="kg-image" alt loading="lazy" width="2000" height="1098" srcset="../content/images/size/w600/2023/05/--2022-06-20-14.34.41.png 600w, ../content/images/size/w1000/2023/05/--2022-06-20-14.34.41.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-20-14.34.41.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-20-14.34.41.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>我们可以看到在测试项目中会生成一个 token.json 的文件,里面的内容就是我们在 figma 中设置好的 design tokens.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-20-14.36.02.png" class="kg-image" alt loading="lazy" width="2000" height="1094" srcset="../content/images/size/w600/2023/05/--2022-06-20-14.36.02.png 600w, ../content/images/size/w1000/2023/05/--2022-06-20-14.36.02.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-20-14.36.02.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-20-14.36.02.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>但在实际的使用过程中研发不会直接将该 json 文件直接进行使用,只是将此作为参考以及基准依据使用.比如我们可以看到  <a href="https://gitlab.com/gitlab-org/gitlab-ui?ref=localhost">GitLab-UI</a> 项目中的  <a href="https://gitlab.com/gitlab-org/gitlab-ui/-/blob/main/src/scss/variables.scss?ref=localhost">variables.scss</a> 文件的内容.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-20-14.40.45.png" class="kg-image" alt loading="lazy" width="2000" height="1104" srcset="../content/images/size/w600/2023/05/--2022-06-20-14.40.45.png 600w, ../content/images/size/w1000/2023/05/--2022-06-20-14.40.45.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-20-14.40.45.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-20-14.40.45.png 2400w" sizes="(min-width: 720px) 720px"></figure><h2 id="5%E4%BD%BF%E7%94%A8-zapier-%E5%90%8C%E6%AD%A5%E8%AE%B0%E5%BD%95%E5%88%B0-slack-%E7%BE%A4%E7%BB%84">5.使用 Zapier 同步记录到 Slack 群组</h2><p>最后我们来看一个实际的需求,这个需求是在一个设计师群里偶然看到的.这位设计师问,有没有团队利用 Figma 的 API 实现了类似的功能:设计师在 figma 里修改了关键数值（如 style）并 push 后，团队协作工具（如 slack、飞书）里就能自动收到通知？</p><p>这个时候我们就可以使用<a href="https://zapier.com/?ref=localhost">Zapier</a>,它是一款无代码集成平台,可以与 2000+ 家 SaaS 产品对接,同步数据和执行动作.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-20-14.46.14-1.png" class="kg-image" alt loading="lazy" width="2000" height="1036" srcset="../content/images/size/w600/2023/05/--2022-06-20-14.46.14-1.png 600w, ../content/images/size/w1000/2023/05/--2022-06-20-14.46.14-1.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-20-14.46.14-1.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-20-14.46.14-1.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>在上面的需求中,我们只需要在 GitLab 有提交发生时,同步消息到 Slack 群组就可以了.选择 app 和事件后,zapier 会一步步指导我们完成配置.</p><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-21-09.57.47.png" class="kg-image" alt loading="lazy" width="2000" height="923" srcset="../content/images/size/w600/2023/05/--2022-06-21-09.57.47.png 600w, ../content/images/size/w1000/2023/05/--2022-06-21-09.57.47.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-21-09.57.47.png 1600w, ../content/images/2023/05/--2022-06-21-09.57.47.png 2266w" sizes="(min-width: 720px) 720px"></figure><p>完成所有的配置需要以下步骤:</p><ul><li>连接 GitLab</li><li>连接 Slack</li><li>定制 Zap</li><li>测试 Zap</li><li>开启 Zap</li></ul><figure class="kg-card kg-image-card"><img src="../content/images/2023/05/--2022-06-21-10.42.59.png" class="kg-image" alt loading="lazy" width="2000" height="291" srcset="../content/images/size/w600/2023/05/--2022-06-21-10.42.59.png 600w, ../content/images/size/w1000/2023/05/--2022-06-21-10.42.59.png 1000w, ../content/images/size/w1600/2023/05/--2022-06-21-10.42.59.png 1600w, ../content/images/size/w2400/2023/05/--2022-06-21-10.42.59.png 2400w" sizes="(min-width: 720px) 720px"></figure><p>完成所有的设置后,当我们在 Figma 的 Figma token 插件上同步样式至 GitLab 后, Zapier 会自动将提交信息同步至 Slack.我们可以在配置的过程中定制 Slack 的通知内容,它支持非常多的字段可以选择.在 GitLab 中我们也可以针对不同的 Branch 和 tag 进行动作的抓取,这样我们就能充分的将协作完成的更及时高效.</p><p>相关链接:<br><a href="https://docs.figmatokens.com/?ref=localhost">Figma Tokens - Docs</a><br><a href="https://www.figma.com/community/plugin/843461159747178978?ref=localhost">Figma Tokens - Plugin</a><br><a href="https://www.figma.com/community/file/1077953107713783283?ref=localhost">Component Tokens &amp; Themes Example</a><br><a href="https://zapier.com/?ref=localhost">Zapier</a><br><a href="https://slack.com/?ref=localhost">Slack</a></p>
+		</div>
+		<div class="section-post-authors post-authors flex  post-author-single first">
+	<div class="author-label">
+		<span>Read more posts by this author</span>
+	</div>
+	<div class="author-wrap flex">
+		<a href="../author/youngbeom/index.html" class="item-link-overlay"></a>
+		<div class="author-content">
+			<h4 class="no-bio no-profile-image no-cover-image"><a href="../author/youngbeom/index.html">youngbeom</a></h4>
+		</div>
+	</div>
+</div>		<div class="post-meta">
+			<div class="post-share">
+	<a class="twitter" href="https://twitter.com/intent/tweet?text=%E4%BD%BF%E7%94%A8%20Figma%20token%20%2B%20GitLab%20%E5%88%9B%E5%BB%BA%E8%AE%BE%E8%AE%A1%E7%B3%BB%E7%BB%9F&amp;url=http://localhost:2368/design-tokens-gitlab/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+	<a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/design-tokens-gitlab/" target="_blank" rel="noopener"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+	<a href="javascript:" class="copy" id="copy" data-clipboard-target="#link-value"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.33 13.04h-4.155v4.154h-2.078v-4.155H9.942v-2.077h4.155V6.806h2.078v4.156h4.154v2.077zM8.902 18.58a6.582 6.582 0 0 1 0-13.162c.068 0 .135.007.202.009a8.874 8.874 0 0 0-.001 13.144c-.067 0-.133.009-.2.009zm6.194-15.484a8.876 8.876 0 0 0-3.087.56A8.904 8.904 0 0 0 0 12a8.903 8.903 0 0 0 8.903 8.905 8.893 8.893 0 0 0 3.103-.563 8.854 8.854 0 0 0 3.09.563A8.903 8.903 0 0 0 24 12a8.904 8.904 0 0 0-8.903-8.903z"/></svg></a>
+	<span class="copy-popup">The link has been copied!</span>
+	<input type="text" value="http://localhost:2368/design-tokens-gitlab/" id="link-value">
+</div>		</div>
+	</div>
+</article>
+<aside class="section-prev-next">
+    <div class="prev-next-wrap">
+        <a href="../gitlab-issue-template/index.html" class="prev-post post tag-code is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2023/05/Cover.png)"></div>
+            <section class="prev-next-title">
+                <h5>Newer Post</h5>
+                <h3>使用议题描述模版来提升远程入职&amp;工作体验</h3>
+            </section>
+        </a>
+        <a href="../one-year-remote/index.html" class="next-post post tag-life tag-hash-import-2023-05-19-07-30 is-image">
+            <div class="prev-next-image" style="background-image: url(../content/images/2022/05/remote-work.jpg)"></div>
+            <section class="prev-next-title">
+                <h5>Older Post</h5>
+                <h3>记录我远程办公的第一年</h3>
+            </section>
+        </a>
+    </div>
+</aside><div class="section-disqus">
+	</div>
+
+			</div>
+			<footer class="section-footer">
+	<div class="footer-wrap wrap flex">
+		<div class="footer-logo flex">
+			<a class="is-logo" href="../index.html"><img src="../content/images/2023/05/publication-logo.png" alt="乌托邦是个理想国"></a>
+		</div>
+		<div class="footer-nav">
+			<ul class="nav-list">
+				
+<li class="nav-list-item">
+	<a href="https://shenyongfan.com" class="nav-link">主页</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/life/index.html" class="nav-link">生活</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/design/index.html" class="nav-link">设计</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-list-item">
+	<a href="../tag/read/index.html" class="nav-link">读书</a>
+	<span class="nav-dot"></span>
+</li>
+<li class="nav-dots">
+	<ul class="nav-dots-wrap">
+		<li class="nav-list-item">
+			<a href="http://localhost:2368/about/" class="nav-link">关于</a>
+			<span class="nav-dot"></span>
+		</li>
+	</ul>
+</li>
+
+			</ul>
+		</div>
+		<div class="footer-social-links flex">
+			<a href="https://www.facebook.com/youngbeomshen/" aria-label="link Facebook"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg></a>
+			<a href="https://twitter.com/ShinYoungboom" aria-label="link Twitter"><svg class="global-svg" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg></a>
+			
+
+		</div>
+	</div>
+	<div class="footer-copyright">
+		&copy; 2023 <a href="../index.html">乌托邦是个理想国</a>.
+		All Right Reserved. Published with <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a> & <a href="https://fueko.net" target="_blank" rel="noopener noreferrer">Nurui</a>.
+	</div>
+</footer>		</div>
+		<div id="notifications" class="global-notification">
+	<div class="subscribe">You’ve successfully subscribed to 乌托邦是个理想国</div>
+	<div class="signin">Welcome back! You’ve successfully signed in.</div>
+	<div class="signup">Great! You’ve successfully signed up.</div>
+	<div class="expired">Your link has expired</div>
+	<div class="checkout-success">Success! Check your email for magic link to sign-in.</div>
+</div>
+				<script src="../assets/js/post.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/global.js%3Fv=6c9bd47ebb"></script>
+		<script src="../assets/js/ityped.js%3Fv=6c9bd47ebb"></script>
+		
+		<script>
+!function(){"use strict";const p=new URLSearchParams(window.location.search),isAction=p.has("action"),isStripe=p.has("stripe"),success=p.get("success"),action=p.get("action"),stripe=p.get("stripe"),n=document.getElementById("notifications"),a="is-subscribe",b="is-signin",c="is-signup",d="is-expired",e="is-checkout-success";p&&(isAction&&(action=="subscribe"&&success=="true"&&n.classList.add(a),action=="signin"&&success=="true"&&n.classList.add(b),action=="signup"&&success=="true"&&n.classList.add(c),success=="false"&&n.classList.add(d)),isStripe&&stripe=="success"&&n.classList.add(e),(isAction||isStripe)&&setTimeout(function(){window.history.replaceState(null,null,window.location.pathname),n.classList.remove(a,b,c,d,e)},5000))}();
+</script>
+
+		
+		
+	</body>
+</html>
