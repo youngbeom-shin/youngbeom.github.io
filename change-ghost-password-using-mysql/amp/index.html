@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ⚡>
+<html ⚡ lang="zh">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -73,8 +73,8 @@
     <meta name="twitter:data2" content="技术">
     <meta name="twitter:site" content="@ShinYoungboom">
     <meta name="twitter:creator" content="@ShinYoungboom">
-    <meta property="og:image:width" content="2000">
-    <meta property="og:image:height" content="1333">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
     
     <script type="application/ld+json">
 {
@@ -109,8 +109,8 @@
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:2368/content/images/2022/02/reset-ghost-password-mysql-1.jpg",
-        "width": 2000,
-        "height": 1333
+        "width": 1200,
+        "height": 800
     },
     "keywords": "技术",
     "description": "背景\n\n因为有太长时间没有登录Ghost博客后台，导致忘记了我的登录密码，加上最初没有给博客配置邮件客户端，所以也无法通过点击忘记密码给邮箱发邮件的方式来找回，好在我可以通过ssh登录服务器，之后通过修改Mysql的表来重置我的密码。\n\n\n如何重置密码\n\n首先我们通过ssh登录我们的博客服务器，然后链接我们的mysql，但不幸的是我甚至忘记了我的database和database name，但不要着急，我们是可以在服务器目录中找到的\n\n\n第一步\n首先进入mysql目录 cd /etc/mysql\n\n之后查看里面的账号和密码 sudo vim debian.cnf\n\n然后使用这个文件中的文件名和密码进入mysql，如果debian.cnf中的用户名为 debian-sys-miant则在在终端输入：mysql -u debian-sys-maint -p，点击回车就可以进入了\n\n第二步\n这时候就需要修改你的密码了，在进入数据库后需要选择一个database，可以先输入 show database来查看列表，我的Ghost相关的Database是 ghost_prod\n\n之后输入 use ",
@@ -118,7 +118,7 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.59">
+    <meta name="generator" content="Ghost 5.100">
     <link rel="alternate" type="application/rss+xml" title="乌托邦是个理想国" href="../../rss/index.html">
 
     <style amp-custom>
